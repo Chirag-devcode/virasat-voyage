@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { TRAIL } from "@/data/virasat";
+import { TRAIL, type TrailStop } from "@/data/virasat";
+
+const FIRST = TRAIL[0] as TrailStop;
 
 export function TrailQuest() {
-  const [activeId, setActiveId] = useState(TRAIL[0].id);
+  const [activeId, setActiveId] = useState(FIRST.id);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [score, setScore] = useState(0);
 
@@ -21,10 +23,11 @@ export function TrailQuest() {
   const reset = () => {
     setAnswers({});
     setScore(0);
-    setActiveId(TRAIL[0].id);
+    setActiveId(FIRST.id);
   };
 
   const nextIndex = TRAIL.findIndex((t) => t.id === activeId) + 1;
+  const nextStop = TRAIL[nextIndex];
 
   return (
     <div className="animate-rise py-12">
@@ -153,15 +156,15 @@ export function TrailQuest() {
                 {picked === active.answer ? `CORRECT · +${active.points}` : "NOT QUITE"}
               </p>
               <p className="mt-2 text-sm text-muted-foreground">{active.fact}</p>
-              {nextIndex < TRAIL.length && (
+              {nextStop && (
                 <button
-                  onClick={() => setActiveId(TRAIL[nextIndex].id)}
+                  onClick={() => setActiveId(nextStop.id)}
                   className="mt-4 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
                 >
-                  Next stop: {TRAIL[nextIndex].site} →
+                  Next stop: {nextStop.site} →
                 </button>
               )}
-              {nextIndex >= TRAIL.length && (
+              {!nextStop && (
                 <p className="mt-4 font-display text-lg italic text-lamp-soft">
                   Trail complete — {score.toLocaleString("en-IN")} points.
                 </p>
