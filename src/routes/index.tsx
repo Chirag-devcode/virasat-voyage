@@ -4,6 +4,7 @@ import { TimePortal } from "@/components/virasat/TimePortal";
 import { OralVault } from "@/components/virasat/OralVault";
 import { TrailQuest } from "@/components/virasat/TrailQuest";
 import { CraftConnect } from "@/components/virasat/CraftConnect";
+import { GuruShishya } from "@/components/virasat/GuruShishya";
 
 const TITLE = "Virasat AI — Living Archive of Indian Heritage";
 const DESC =
@@ -26,6 +27,7 @@ const TABS = [
   { id: "vault", num: "02", label: "Oral Vault" },
   { id: "trail", num: "03", label: "Trail Quest" },
   { id: "craft", num: "04", label: "Craft Connect" },
+  { id: "guru", num: "05", label: "Guru-Shishya" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -76,6 +78,7 @@ function Index() {
         {tab === "vault" && <OralVault />}
         {tab === "trail" && <TrailQuest />}
         {tab === "craft" && <CraftConnect />}
+        {tab === "guru" && <GuruShishya />}
       </main>
 
       <footer className="mt-10 border-t border-border">
