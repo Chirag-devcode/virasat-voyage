@@ -5,6 +5,7 @@ import { OralVault } from "@/components/virasat/OralVault";
 import { TrailQuest } from "@/components/virasat/TrailQuest";
 import { CraftConnect } from "@/components/virasat/CraftConnect";
 import { GuruShishya } from "@/components/virasat/GuruShishya";
+import { ChatWidget } from "@/components/virasat/ChatWidget";
 
 const TITLE = "Virasat AI — Living Archive of Indian Heritage";
 const DESC =
