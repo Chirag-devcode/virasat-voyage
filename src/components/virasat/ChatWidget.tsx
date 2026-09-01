@@ -129,7 +129,8 @@ export function ChatWidget() {
     setRecording(true);
     setTimeout(() => {
       setRecording(false);
-      respond(CHIPS[Math.floor(Math.random() * CHIPS.length)].label[lang] ?? CHIPS[0].label.English);
+      const chip = CHIPS[Math.floor(Math.random() * CHIPS.length)];
+      respond(chip?.label[lang] ?? chip?.label.English ?? CHIPS[0]!.label.English);
     }, 1800);
   };
 
