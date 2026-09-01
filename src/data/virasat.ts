@@ -353,3 +353,148 @@ export const CRAFTS: Craft[] = [
     provenance: ["Bamboo cut at full moon", "Split and sun-dried", "Woven in one sitting", "Minted on-chain"],
   },
 ];
+
+export type Masterclass = {
+  id: string;
+  artisan: string;
+  artform: string;
+  state: StateName;
+  place: string;
+  duration: string;
+  fee: number;
+  mode: "Live" | "Recorded";
+  schedule: string;
+  seats: number;
+  blurb: string;
+  curriculum: string[];
+  kit: string[];
+};
+
+export const MASTERCLASSES: Masterclass[] = [
+  {
+    id: "m1",
+    artisan: "Abdul Gafur Khatri",
+    artform: "Rogan Art",
+    state: "Gujarat",
+    place: "Nirona, Kutch",
+    duration: "3 sessions · 6 hrs",
+    fee: 2800,
+    mode: "Live",
+    schedule: "Sat 10:00 IST · from 12 Sep",
+    seats: 8,
+    blurb: "Castor-oil paint drawn in mid-air onto cloth by one surviving family.",
+    curriculum: [
+      "History of Rogan and the last practising household",
+      "Boiling castor oil into rogan paste, pigment ratios",
+      "The stylus lift: drawing without touching the cloth",
+      "Mirror-fold transfer and the tree-of-life motif",
+      "Finishing, curing and care of a rogan panel",
+    ],
+    kit: ["Rogan paste, 6 pigments", "Iron stylus (kalam)", "Pre-washed cotton cloth 2×", "Muslin wipes & oil pot"],
+  },
+  {
+    id: "m2",
+    artisan: "Sukhram Marawi",
+    artform: "Dhokra Metal Casting",
+    state: "Madhya Pradesh",
+    place: "Betul",
+    duration: "4 sessions · 10 hrs",
+    fee: 4500,
+    mode: "Live",
+    schedule: "Sun 16:00 IST · from 20 Sep",
+    seats: 6,
+    blurb: "Four-thousand-year-old lost-wax bronze, taught at the furnace.",
+    curriculum: [
+      "Clay core shaping and drying",
+      "Beeswax thread winding — the Dhokra line",
+      "Investment moulding and dewaxing",
+      "Bronze pour at 1150°C, safety drill",
+      "Breaking the mould, filing and patina",
+    ],
+    kit: ["Beeswax thread 250g", "Core clay & sand mix", "Crucible tongs (loan)", "Files, brass brush, apron"],
+  },
+  {
+    id: "m3",
+    artisan: "Zubaida Begum",
+    artform: "Chikankari Shadow Work",
+    state: "Uttar Pradesh",
+    place: "Lucknow",
+    duration: "2 sessions · 5 hrs",
+    fee: 1900,
+    mode: "Recorded",
+    schedule: "On demand · lifetime access",
+    seats: 40,
+    blurb: "Thirty-two stitches survive; you will learn the six most endangered.",
+    curriculum: [
+      "Reading a block-printed chikan pattern",
+      "Bakhiya — the reverse shadow stitch",
+      "Phanda and murri knots",
+      "Jaali: cutting no thread, opening the weave",
+      "Washing, starching and blueing the finished piece",
+    ],
+    kit: ["Cotton mulmul panel", "Untwisted cotton thread set", "Needles 9/11, wooden hoop", "Traced pattern sheets"],
+  },
+  {
+    id: "m4",
+    artisan: "Bhagyalaxmi Maharana",
+    artform: "Pattachitra Palm-Leaf Etching",
+    state: "Odisha",
+    place: "Raghurajpur",
+    duration: "3 sessions · 7 hrs",
+    fee: 2400,
+    mode: "Live",
+    schedule: "Fri 18:00 IST · from 11 Sep",
+    seats: 10,
+    blurb: "Stylus lines on cured palm leaf, blackened with lamp soot.",
+    curriculum: [
+      "Curing and stitching palm leaves into a panel",
+      "Freehand stylus discipline — no pencil marks",
+      "Iconography of Jagannath and the Dasavatara",
+      "Lampblack rubbing and pigment washes",
+      "Folding, binding and archival storage",
+    ],
+    kit: ["Cured palm-leaf panel", "Iron stylus", "Lampblack, turmeric, hingula pigments", "Coconut-shell mixing cups"],
+  },
+  {
+    id: "m5",
+    artisan: "K. Ramankutty",
+    artform: "Kasavu Pit-Loom Weaving",
+    state: "Kerala",
+    place: "Balaramapuram",
+    duration: "5 sessions · 12 hrs",
+    fee: 5200,
+    mode: "Live",
+    schedule: "Wed 17:30 IST · from 17 Sep",
+    seats: 5,
+    blurb: "Unbleached cotton and zari on a below-ground pit loom.",
+    curriculum: [
+      "Sizing and warping unbleached cotton",
+      "Setting the pit loom, treadle rhythm",
+      "Inserting the kasavu zari border",
+      "Selvedge control and beat consistency",
+      "Cutting off, knotting and the final wash",
+    ],
+    kit: ["Cotton warp bundle", "Zari spool", "Shuttle and bobbins", "Loom access at the shala"],
+  },
+  {
+    id: "m6",
+    artisan: "Bina Deka",
+    artform: "Jaapi Bamboo Weave",
+    state: "Assam",
+    place: "Nalbari",
+    duration: "2 sessions · 4 hrs",
+    fee: 1500,
+    mode: "Recorded",
+    schedule: "On demand · lifetime access",
+    seats: 60,
+    blurb: "The sun-hat of the Brahmaputra plains, split and woven by hand.",
+    curriculum: [
+      "Selecting and splitting bamboo culms",
+      "Sun-drying and sizing the splints",
+      "The conical spiral weave",
+      "Tokou-leaf lining and rim binding",
+      "Dyed motif inlay for a bihu jaapi",
+    ],
+    kit: ["Pre-split bamboo splints", "Tokou palm leaf sheets", "Cane binding cord", "Splitting knife (dao)"],
+  },
+];
