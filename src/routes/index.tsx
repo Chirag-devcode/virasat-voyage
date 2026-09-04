@@ -6,6 +6,7 @@ import { TrailQuest } from "@/components/virasat/TrailQuest";
 import { CraftConnect } from "@/components/virasat/CraftConnect";
 import { GuruShishya } from "@/components/virasat/GuruShishya";
 import { ChatWidget } from "@/components/virasat/ChatWidget";
+import { StatesAtlas } from "@/components/virasat/StatesAtlas";
 
 const TITLE = "Virasat AI — Living Archive of Indian Heritage";
 const DESC =
@@ -29,6 +30,7 @@ const TABS = [
   { id: "trail", num: "03", label: "Trail Quest" },
   { id: "craft", num: "04", label: "Craft Connect" },
   { id: "guru", num: "05", label: "Guru-Shishya" },
+  { id: "atlas", num: "06", label: "States Atlas" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
