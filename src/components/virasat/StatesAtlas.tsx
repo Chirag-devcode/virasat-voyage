@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { MapPin, Search, X } from "lucide-react";
 import { useStatesUts } from "@/services/hooks";
+import { imagesForState } from "@/data/stateImages";
 import { distinct } from "@/services/heritage";
 import type { StateUT } from "@/types/database";
 
@@ -109,8 +110,20 @@ export function StatesAtlas() {
             {filtered.map((s) => (
               <article
                 key={s.id}
-                className="flex flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-lamp/40"
+                className="flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-lamp/40"
               >
+                {imagesForState(s.state_ut)[0] && (
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <img
+                      src={imagesForState(s.state_ut)[0]}
+                      alt={`${s.state_ut} heritage`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] tracking-[0.2em] text-lamp">
                     {(s.region ?? "INDIA").toUpperCase()}
@@ -138,6 +151,7 @@ export function StatesAtlas() {
                 <button onClick={() => setOpen(s)} className="mt-4 self-start text-sm text-lamp hover:text-lamp-soft">
                   Open profile →
                 </button>
+                </div>
               </article>
             ))}
           </div>
@@ -156,43 +170,77 @@ export function StatesAtlas() {
           onClick={() => setOpen(null)}
         >
           <div
-            className="max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-lamp/30 bg-popover p-7 shadow-lamp animate-rise"
+            className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-lamp/30 bg-popover shadow-lamp animate-rise"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="eyebrow">{open.region}</p>
-                <h3 className="mt-3 font-display text-2xl italic text-lamp-soft">{open.state_ut}</h3>
-                <p className="mt-1 font-mono text-[10px] tracking-widest text-muted-foreground">
-                  CAPITAL · {(open.capital ?? "—").toUpperCase()}
-                </p>
-              </div>
-              <button
-                onClick={() => setOpen(null)}
-                aria-label="Close"
-                className="rounded-full border border-border p-2 text-muted-foreground hover:text-foreground"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
+            {(() => {
+              const gallery = imagesForState(open.state_ut);
+              const hero = gallery[0];
+              return (
+                <>
+                  <div className="relative">
+                    {hero ? (
+                      <img
+                        src={hero}
+                        alt={`${open.state_ut} heritage`}
+                        className="h-56 w-full object-cover sm:h-64"
+                      />
+                    ) : (
+                      <div className="h-20 w-full bg-card" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-popover via-popover/50 to-transparent" />
+                    <button
+                      onClick={() => setOpen(null)}
+                      aria-label="Close"
+                      className="absolute right-4 top-4 rounded-full border border-border bg-background/70 p-2 text-muted-foreground backdrop-blur hover:text-foreground"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                    <div className="absolute bottom-4 left-6 right-6">
+                      <p className="eyebrow">{open.region}</p>
+                      <h3 className="mt-1 font-display text-3xl italic text-lamp-soft">{open.state_ut}</h3>
+                      <p className="mt-1 font-mono text-[10px] tracking-widest text-muted-foreground">
+                        CAPITAL · {(open.capital ?? "—").toUpperCase()}
+                      </p>
+                    </div>
+                  </div>
 
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{open.signature_heritage}</p>
+                  <div className="p-6 sm:p-7">
+                    <p className="text-sm leading-relaxed text-muted-foreground">{open.signature_heritage}</p>
 
-            <div className="mt-6 space-y-5">
-              <ChipList label="Languages" items={open.major_languages} />
-              <ChipList label="Major festivals" items={open.major_festivals} />
-              <ChipList label="Signature crafts" items={open.signature_crafts} />
-              <ChipList label="Performing arts" items={open.signature_performing_arts} />
-              <ChipList label="Cuisine highlights" items={open.cuisine_highlights} />
-              <ChipList label="Heritage tourism anchors" items={open.heritage_tourism_anchors} />
-            </div>
+                    {gallery.length > 1 && (
+                      <div className="mt-5 grid grid-cols-3 gap-2">
+                        {gallery.slice(1, 4).map((src) => (
+                          <img
+                            key={src}
+                            src={src}
+                            alt={`${open.state_ut} heritage`}
+                            loading="lazy"
+                            className="h-24 w-full rounded-lg object-cover sm:h-28"
+                          />
+                        ))}
+                      </div>
+                    )}
 
-            <button
-              onClick={() => setOpen(null)}
-              className="mt-7 w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
-            >
-              Close
-            </button>
+                    <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                      <ChipList label="Languages" items={open.major_languages} />
+                      <ChipList label="Major festivals" items={open.major_festivals} />
+                      <ChipList label="Signature crafts" items={open.signature_crafts} />
+                      <ChipList label="Performing arts" items={open.signature_performing_arts} />
+                      <ChipList label="Cuisine highlights" items={open.cuisine_highlights} />
+                      <ChipList label="Heritage tourism anchors" items={open.heritage_tourism_anchors} />
+                    </div>
+
+                    <button
+                      onClick={() => setOpen(null)}
+                      className="mt-7 w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </>
+              );
+            })()}
           </div>
         </div>
       )}
