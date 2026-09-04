@@ -82,6 +82,7 @@ function Index() {
         {tab === "trail" && <TrailQuest />}
         {tab === "craft" && <CraftConnect />}
         {tab === "guru" && <GuruShishya />}
+        {tab === "atlas" && <StatesAtlas />}
       </main>
 
       <footer className="mt-10 border-t border-border">
