@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { MapPin, Search, X } from "lucide-react";
 import { useStatesUts } from "@/services/hooks";
+import { imagesForState } from "@/data/stateImages";
 import { distinct } from "@/services/heritage";
 import type { StateUT } from "@/types/database";
 
@@ -109,8 +110,20 @@ export function StatesAtlas() {
             {filtered.map((s) => (
               <article
                 key={s.id}
-                className="flex flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-lamp/40"
+                className="flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-lamp/40"
               >
+                {imagesForState(s.state_ut)[0] && (
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <img
+                      src={imagesForState(s.state_ut)[0]}
+                      alt={`${s.state_ut} heritage`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] tracking-[0.2em] text-lamp">
                     {(s.region ?? "INDIA").toUpperCase()}
@@ -138,6 +151,7 @@ export function StatesAtlas() {
                 <button onClick={() => setOpen(s)} className="mt-4 self-start text-sm text-lamp hover:text-lamp-soft">
                   Open profile →
                 </button>
+                </div>
               </article>
             ))}
           </div>
