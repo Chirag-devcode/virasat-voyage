@@ -209,17 +209,18 @@ export function StatesAtlas() {
                     <p className="text-sm leading-relaxed text-muted-foreground">{open.signature_heritage}</p>
 
                     {gallery.length > 1 && (
-                      <div className="mt-5 grid grid-cols-3 gap-2">
+                      <div className="mt-5 flex gap-2">
                         {gallery.slice(1, 4).map((src) => (
                           <img
                             key={src}
                             src={src}
                             alt={`${open.state_ut} heritage`}
                             loading="lazy"
-                            className="h-24 w-full rounded-lg object-cover sm:h-28"
+                            className="h-24 w-full flex-1 rounded-lg object-cover sm:h-28"
                           />
                         ))}
                       </div>
+
                     )}
 
                     <div className="mt-6 grid gap-5 sm:grid-cols-2">
