@@ -7,6 +7,7 @@ import { CraftConnect } from "@/components/virasat/CraftConnect";
 import { GuruShishya } from "@/components/virasat/GuruShishya";
 import { ChatWidget } from "@/components/virasat/ChatWidget";
 import { StatesAtlas } from "@/components/virasat/StatesAtlas";
+import { LandingExperience } from "@/components/virasat/LandingExperience";
 
 const TITLE = "Virasat AI — Living Archive of Indian Heritage";
 const DESC =
@@ -19,6 +20,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: DESC },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -37,9 +40,14 @@ type TabId = (typeof TABS)[number]["id"];
 
 function Index() {
   const [tab, setTab] = useState<TabId>("time");
+  const [entered, setEntered] = useState(false);
+
+  if (!entered) {
+    return <LandingExperience onEnter={() => setEntered(true)} />;
+  }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="explore" className="min-h-screen bg-background animate-dashboard-enter">
       <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-5">
           <div className="flex items-center justify-between py-4">

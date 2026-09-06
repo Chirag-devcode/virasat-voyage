@@ -40,6 +40,7 @@
   --color-ember: var(--ember);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-holo-cyan: var(--holo-cyan);
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -62,6 +63,7 @@
   --lamp: oklch(0.78 0.13 72);
   --lamp-soft: oklch(0.88 0.08 82);
   --ember: oklch(0.58 0.13 45);
+  --holo-cyan: oklch(0.86 0.14 202);
 
   --primary: oklch(0.78 0.13 72);
   --primary-foreground: oklch(0.17 0.01 60);
@@ -79,11 +81,16 @@
   --ring: oklch(0.78 0.13 72);
 
   --shadow-lamp: 0 24px 70px -30px oklch(0.78 0.13 72 / 0.45);
+  --shadow-hologram: 0 0 28px oklch(0.78 0.13 72 / 0.26), 0 0 64px oklch(0.86 0.14 202 / 0.12);
+  --shadow-hologram-strong: 0 0 34px oklch(0.78 0.13 72 / 0.5), 0 0 84px oklch(0.86 0.14 202 / 0.28);
   --glow-lamp: radial-gradient(
     circle,
     oklch(0.78 0.13 72 / 0.22),
     transparent 70%
   );
+  --hologram-grid: linear-gradient(oklch(0.86 0.14 202 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.86 0.14 202 / 0.055) 1px, transparent 1px);
+  --hologram-vignette: radial-gradient(circle at 50% 44%, transparent 16%, oklch(0.16 0.008 60 / 0.32) 58%, var(--background) 100%);
 }
 
 @layer base {
@@ -96,6 +103,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    margin: 0;
   }
 
   ::selection {
@@ -109,6 +117,36 @@
 
 @utility shadow-lamp {
   box-shadow: var(--shadow-lamp);
+}
+
+@utility shadow-hologram {
+  box-shadow: var(--shadow-hologram);
+}
+
+@utility shadow-hologram-strong {
+  box-shadow: var(--shadow-hologram-strong);
+}
+
+@utility hologram-grid {
+  background-image: var(--hologram-grid);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 74%, transparent 100%);
+  transform: perspective(600px) rotateX(63deg) scale(1.55) translateY(20%);
+  transform-origin: center bottom;
+}
+
+@utility hologram-vignette {
+  background-image: var(--hologram-vignette);
+}
+
+@utility hologram-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    oklch(0.86 0.14 202 / 0.022) 4px
+  );
+  mix-blend-mode: screen;
 }
 
 @utility eyebrow {
@@ -149,10 +187,37 @@
   }
 }
 
+@keyframes hologram-status {
+  0%, 100% { opacity: 0.35; box-shadow: 0 0 5px var(--holo-cyan); }
+  50% { opacity: 1; box-shadow: 0 0 14px var(--holo-cyan); }
+}
+
+@keyframes dashboard-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility holo-status-dot {
+  animation: hologram-status 2s ease-in-out infinite;
+}
+
+@utility animate-dashboard-enter {
+  animation: dashboard-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @utility animate-rise {
   animation: virasat-rise 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @utility animate-breathe {
   animation: virasat-breathe 4s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hologram-landing *,
+  .animate-dashboard-enter {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
 }
