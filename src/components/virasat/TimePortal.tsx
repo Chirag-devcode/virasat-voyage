@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import heroMonument from "@/assets/hero-monument.jpg";
 import { LANGUAGES, MONUMENTS, STATES, type Language, type StateName } from "@/data/virasat";
+import { imagesForState } from "@/data/stateImages";
 
 export function TimePortal() {
   const [state, setState] = useState<StateName>("Uttar Pradesh");
@@ -12,6 +13,13 @@ export function TimePortal() {
   const featured = monuments[0];
   const rest = monuments.slice(1);
   const open = MONUMENTS.find((m) => m.id === openId) ?? null;
+  const heroImage = imagesForState(state)[0] ?? heroMonument;
+
+  const selectState = (s: StateName) => {
+    setState(s);
+    setPlayingId(null);
+    setOpenId(null);
+  };
 
   const storyFor = (m: typeof MONUMENTS[number]) => m.stories[language] ?? m.stories.English;
 
@@ -36,7 +44,7 @@ export function TimePortal() {
               {STATES.map((s) => (
                 <button
                   key={s}
-                  onClick={() => setState(s)}
+                  onClick={() => selectState(s)}
                   className={`rounded-full px-4 py-2 text-sm transition-colors ${
                     s === state
                       ? "bg-primary text-primary-foreground"
@@ -69,8 +77,9 @@ export function TimePortal() {
 
           <div className="relative">
             <img
-              src={heroMonument}
-              alt="Carved sandstone temple facade lit by a single lamp at dusk"
+              key={state}
+              src={heroImage}
+              alt={featured ? `${featured.name}, ${featured.place}, ${state}` : `${state} heritage`}
               width={1024}
               height={1280}
               className="aspect-4/5 w-full rounded-xl object-cover"
