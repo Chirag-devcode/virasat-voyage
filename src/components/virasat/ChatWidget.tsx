@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Bot, Mic, Send, X } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { askSathi, type SathiSource } from "@/lib/sathi.functions";
+import { GREETINGS, generateResponse, type ChatLang } from "@/services/chatbot";
 
 const CHAT_LANGS = ["English", "Hindi", "Bengali", "Tamil", "Telugu", "Marathi", "Gujarati"] as const;
-type ChatLang = (typeof CHAT_LANGS)[number];
 
-type TopicKey = "taj" | "artisans" | "record" | "trail" | "guru" | "greet";
+type TopicKey = "taj" | "artisans" | "record" | "monument" | "trail" | "guru" | "greet";
 
 const REPLIES: Record<ChatLang, Record<TopicKey, string>> = {
   English: {
