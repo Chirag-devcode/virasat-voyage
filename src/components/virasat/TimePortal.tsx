@@ -3,7 +3,7 @@ import heroMonument from "@/assets/hero-monument.jpg";
 import { LANGUAGES, MONUMENTS, STATES, type Language, type StateName } from "@/data/virasat";
 import { imagesForState } from "@/data/stateImages";
 
-export function TimePortal() {
+export function TimePortal({ onStateChange }: { onStateChange?: (s: StateName) => void }) {
   const [state, setState] = useState<StateName>("Uttar Pradesh");
   const [language, setLanguage] = useState<Language>("English");
   const [openId, setOpenId] = useState<string | null>(null);
