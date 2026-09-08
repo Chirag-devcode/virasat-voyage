@@ -290,7 +290,9 @@ const FIGURES: { keys: string[]; text: string }[] = [
 /* Localisation                                                        */
 /* ------------------------------------------------------------------ */
 
-const LEAD: Record<ChatLang, Record<string, string>> = {
+type LeadKey = "monument" | "craft" | "festival" | "oral" | "trail" | "guru" | "figure" | "ask";
+
+const LEAD: Record<ChatLang, Record<LeadKey, string>> = {
   English: {
     monument: "Here is what the archive holds:",
     craft: "About the crafts:",
