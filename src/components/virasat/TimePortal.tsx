@@ -19,6 +19,7 @@ export function TimePortal({ onStateChange }: { onStateChange?: (s: StateName) =
     setState(s);
     setPlayingId(null);
     setOpenId(null);
+    onStateChange?.(s);
   };
 
   const storyFor = (m: typeof MONUMENTS[number]) => m.stories[language] ?? m.stories.English;
