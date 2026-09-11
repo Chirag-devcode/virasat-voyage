@@ -44,19 +44,19 @@ export function StatesAtlas() {
   );
 
   return (
-    <div className="animate-rise py-12">
+    <div className="animate-rise pb-12 pt-4">
       <p className="eyebrow">(f) States Atlas</p>
-      <h1 className="mt-5 font-display text-4xl italic leading-[1.05] text-balance sm:text-5xl">
+      <h1 className="mt-3 font-display text-4xl italic leading-[1.05] text-balance sm:text-5xl">
         Twenty-eight states,
         <br />
         one living map.
       </h1>
-      <p className="mt-5 max-w-[46ch] text-pretty text-muted-foreground">
+      <p className="mt-4 max-w-[46ch] text-pretty text-muted-foreground">
         Every state and union territory from the archive — its languages, festivals, crafts,
         performing arts and cuisine, drawn live from the heritage dataset.
       </p>
 
-      <div className="mt-8 flex flex-wrap items-center gap-3">
+      <div className="mt-6 flex flex-wrap items-center gap-3">
         <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
@@ -84,21 +84,21 @@ export function StatesAtlas() {
       </div>
 
       {isLoading && (
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="h-40 animate-pulse rounded-xl border border-border bg-card" />
           ))}
         </div>
       )}
       {isError && (
-        <p className="mt-10 text-sm text-muted-foreground">
+        <p className="mt-8 text-sm text-muted-foreground">
           Could not load the states archive. Please try again in a moment.
         </p>
       )}
 
       {!isLoading && !isError && (
         <>
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-6 flex items-center gap-4">
             <span className="font-mono text-[11px] tracking-[0.3em] text-muted-foreground">ATLAS · INDIA</span>
             <div className="h-px flex-1 bg-border" />
             <span className="font-mono text-[11px] text-muted-foreground">
@@ -113,7 +113,7 @@ export function StatesAtlas() {
                 className="flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-lamp/40"
               >
                 {imagesForState(s.state_ut)[0] && (
-                  <div className="relative h-40 w-full overflow-hidden">
+                  <div className="relative h-40 w-full shrink-0 overflow-hidden">
                     <img
                       src={imagesForState(s.state_ut)[0]}
                       alt={`${s.state_ut} heritage`}
@@ -124,40 +124,40 @@ export function StatesAtlas() {
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] tracking-[0.2em] text-lamp">
-                    {(s.region ?? "INDIA").toUpperCase()}
-                  </span>
-                  <span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground">
-                    <MapPin className="h-3 w-3" /> {s.capital}
-                  </span>
-                </div>
-                <h3 className="mt-3 font-display text-lg italic text-balance">{s.state_ut}</h3>
-                <p className="mt-2 line-clamp-2 text-sm text-pretty text-muted-foreground">
-                  {s.signature_heritage}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {(s.major_festivals ?? []).slice(0, 2).map((f) => (
-                    <span key={f} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
-                      {f}
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-lamp">
+                      {(s.region ?? "INDIA").toUpperCase()}
                     </span>
-                  ))}
-                  {(s.signature_crafts ?? []).slice(0, 1).map((c) => (
-                    <span key={c} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
-                      {c}
+                    <span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground">
+                      <MapPin className="h-3 w-3" /> {s.capital}
                     </span>
-                  ))}
-                </div>
-                <button onClick={() => setOpen(s)} className="mt-4 self-start text-sm text-lamp hover:text-lamp-soft">
-                  Open profile →
-                </button>
+                  </div>
+                  <h3 className="mt-3 font-display text-lg italic text-balance">{s.state_ut}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-pretty text-muted-foreground">
+                    {s.signature_heritage}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {(s.major_festivals ?? []).slice(0, 2).map((f) => (
+                      <span key={f} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
+                        {f}
+                      </span>
+                    ))}
+                    {(s.signature_crafts ?? []).slice(0, 1).map((c) => (
+                      <span key={c} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                  <button onClick={() => setOpen(s)} className="mt-4 self-start text-sm text-lamp hover:text-lamp-soft">
+                    Open profile →
+                  </button>
                 </div>
               </article>
             ))}
           </div>
 
           {filtered.length === 0 && (
-            <p className="mt-10 text-sm text-muted-foreground">No states match that search.</p>
+            <p className="mt-8 text-sm text-muted-foreground">No states match that search.</p>
           )}
         </>
       )}
@@ -186,9 +186,9 @@ export function StatesAtlas() {
                         className="h-56 w-full object-cover sm:h-64"
                       />
                     ) : (
-                      <div className="h-20 w-full bg-card" />
+                      <div className="h-40 w-full bg-card" />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-popover via-popover/50 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-popover via-popover/80 to-transparent" />
                     <button
                       onClick={() => setOpen(null)}
                       aria-label="Close"
@@ -196,7 +196,7 @@ export function StatesAtlas() {
                     >
                       <X className="h-4 w-4" />
                     </button>
-                    <div className="absolute bottom-4 left-6 right-6">
+                    <div className="absolute inset-x-6 bottom-4">
                       <p className="eyebrow">{open.region}</p>
                       <h3 className="mt-1 font-display text-3xl italic text-lamp-soft">{open.state_ut}</h3>
                       <p className="mt-1 font-mono text-[10px] tracking-widest text-muted-foreground">
@@ -220,7 +220,6 @@ export function StatesAtlas() {
                           />
                         ))}
                       </div>
-
                     )}
 
                     <div className="mt-6 grid gap-5 sm:grid-cols-2">
