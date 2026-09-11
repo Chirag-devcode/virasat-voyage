@@ -1,4 +1,20 @@
-          <div className="relative">
+          import { useState, useMemo } from "react";
+import heroMonument from "@/assets/hero-monument.jpg";
+import { LANGUAGES, MONUMENTS, STATES, type Language, type StateName } from "@/data/virasat";
+import { imagesForState } from "@/data/stateImages";
+
+export function TimePortal({ onStateChange }: { onStateChange?: (s: StateName) => void }) {
+  const [state, setState] = useState<StateName>("Uttar Pradesh");
+  const [language, setLanguage] = useState<Language>("English");
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
+
+  const monuments = useMemo(() => MONUMENTS.filter((m) => m.state === state), [state]);
+  const featured = monuments[0];
+  const heroImage = imagesForState(state)[0] ?? heroMonument;
+  const storyFor = (m: typeof MONUMENTS[number]) => m.stories[language] ?? m.stories.English;
+
+  return (<div className="relative">
             <div className="relative h-[500px] w-full overflow-hidden rounded-2xl">
               <img
                 key={state}
@@ -41,4 +57,7 @@
                 </div>
               )}
             </div>
-          </div>
+          </div>);
+}
+
+export default TimePortal;
