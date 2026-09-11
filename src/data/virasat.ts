@@ -39,9 +39,9 @@ export type Monument = {
 
 export const MONUMENTS: Monument[] = [
   {
-    id: "fatehpur",
+    id: "Agra",
     state: "Uttar Pradesh",
-    name: "The Lantern Court of Fatehpur Sikri",
+    name: "The Taj Mahal \n Symbol of Love",
     place: "Agra",
     era: "1571 CE",
     duration: "07:12",
