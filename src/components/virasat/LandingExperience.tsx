@@ -67,13 +67,18 @@ export function LandingExperience({ onEnter }: { onEnter: () => void }) {
         </div>
 
         {/* Main Hero Content Area */}
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-5 pb-10 pt-8">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-5 pb-10 pt-4">
           
-          <div className="h-[42vh] min-h-[300px] w-full max-w-4xl sm:h-[50vh] sm:min-h-[400px]">
-            {mounted ? <HeritageHologram /> : <div className="h-full w-full bg-slate-200/60 rounded-xl animate-pulse" />}
+          {/* High-Contrast 3D Hologram Backdrop Card */}
+          <div className="h-[45vh] min-h-[320px] w-full max-w-4xl sm:h-[52vh] sm:min-h-[420px] bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl relative overflow-hidden flex items-center justify-center p-2">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.18)_0,transparent_70%)] pointer-events-none" />
+            <div className="absolute top-3 left-4 font-mono text-[9px] text-cyan-400/70 tracking-widest uppercase">
+              3D DIGITAL HERITAGE SCAN · TAJ MAHAL
+            </div>
+            {mounted ? <HeritageHologram /> : <div className="h-full w-full bg-slate-900 rounded-xl animate-pulse" />}
           </div>
 
-          <div className="relative z-30 mt-4 flex flex-col items-center text-center">
+          <div className="relative z-30 mt-6 flex flex-col items-center text-center">
             <p className="font-mono text-[10px] font-bold tracking-[0.3em] text-amber-700 uppercase mb-2">
               ARCHIVES · MONUMENTS · ORAL TRADITION · ARTISAN GUILDS
             </p>
