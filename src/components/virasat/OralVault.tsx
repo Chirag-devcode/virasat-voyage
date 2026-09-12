@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { RECORDINGS, STATES, type Recording, type StateName } from "@/data/virasat";
 
+type SavedRecording = Recording & { audioUrl?: string };
+
 const BARS = Array.from({ length: 28 }, (_, i) => ({
   dur: 700 + ((i * 137) % 700),
   delay: (i * 53) % 500,
@@ -16,9 +18,24 @@ export function OralVault() {
   const [filter, setFilter] = useState<StateName | "All">("All");
   const [recording, setRecording] = useState(false);
   const [seconds, setSeconds] = useState(0);
-  const [saved, setSaved] = useState<Recording[]>([]);
+  const [saved, setSaved] = useState<SavedRecording[]>([]);
   const [playing, setPlaying] = useState<string | null>(null);
+  const [micError, setMicError] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const mediaRecorder = useRef<MediaRecorder | null>(null);
+  const mediaStream = useRef<MediaStream | null>(null);
+  const chunks = useRef<Blob[]>([]);
+  const audioEl = useRef<HTMLAudioElement | null>(null);
+  const savedRef = useRef<SavedRecording[]>([]);
+  const secondsRef = useRef(0);
+
+  useEffect(() => {
+    savedRef.current = saved;
+  }, [saved]);
+
+  useEffect(() => {
+    secondsRef.current = seconds;
+  }, [seconds]);
 
   useEffect(() => {
     if (recording) {
@@ -32,25 +49,94 @@ export function OralVault() {
     };
   }, [recording]);
 
+  useEffect(() => {
+    return () => {
+      mediaStream.current?.getTracks().forEach((t) => t.stop());
+      if (audioEl.current) {
+        audioEl.current.pause();
+        audioEl.current = null;
+      }
+      savedRef.current.forEach((r) => r.audioUrl && URL.revokeObjectURL(r.audioUrl));
+    };
+  }, []);
+
   const all = useMemo(() => [...saved, ...RECORDINGS], [saved]);
   const list = filter === "All" ? all : all.filter((r) => r.state === filter);
 
+  const startRecording = async () => {
+    setMicError(null);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaStream.current = stream;
+      chunks.current = [];
+      const recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = (e) => {
+        if (e.data.size > 0) chunks.current.push(e.data);
+      };
+      recorder.onstop = () => {
+        const blob = new Blob(chunks.current, {
+          type: chunks.current[0]?.type || "audio/webm",
+        });
+        const audioUrl = URL.createObjectURL(blob);
+        setSaved((prev) => [
+          {
+            id: `new-${Date.now()}`,
+            title: `Untitled field recording ${prev.length + 1}`,
+            narrator: "You",
+            state: filter === "All" ? "Uttar Pradesh" : filter,
+            duration: fmt(secondsRef.current),
+            language: "Unlabelled",
+            audioUrl,
+          },
+          ...prev,
+        ]);
+        setSeconds(0);
+        stream.getTracks().forEach((t) => t.stop());
+        mediaStream.current = null;
+      };
+      mediaRecorder.current = recorder;
+      recorder.start();
+      setSeconds(0);
+      setRecording(true);
+    } catch {
+      setMicError("Microphone access is needed to record. Please allow it and try again.");
+    }
+  };
+
   const stop = () => {
     setRecording(false);
-    if (seconds > 0) {
-      setSaved((prev) => [
-        {
-          id: `new-${Date.now()}`,
-          title: `Untitled field recording ${prev.length + 1}`,
-          narrator: "You",
-          state: filter === "All" ? "Uttar Pradesh" : filter,
-          duration: fmt(seconds),
-          language: "Unlabelled",
-        },
-        ...prev,
-      ]);
+    if (mediaRecorder.current && mediaRecorder.current.state !== "inactive") {
+      mediaRecorder.current.stop();
+    } else {
+      setSeconds(0);
     }
-    setSeconds(0);
+  };
+
+  const toggleRecord = () => {
+    if (recording) {
+      stop();
+    } else {
+      void startRecording();
+    }
+  };
+
+  const togglePlay = (r: Recording | SavedRecording) => {
+    const audioUrl = (r as SavedRecording).audioUrl;
+    if (playing === r.id) {
+      audioEl.current?.pause();
+      audioEl.current = null;
+      setPlaying(null);
+      return;
+    }
+    audioEl.current?.pause();
+    audioEl.current = null;
+    if (audioUrl) {
+      const el = new Audio(audioUrl);
+      el.onended = () => setPlaying(null);
+      void el.play().catch(() => setPlaying(null));
+      audioEl.current = el;
+    }
+    setPlaying(r.id);
   };
 
   return (
@@ -100,8 +186,8 @@ export function OralVault() {
                 </button>
               )}
               <button
-                aria-label={recording ? "Pause recording" : "Start recording"}
-                onClick={() => setRecording((r) => !r)}
+                aria-label={recording ? "Stop recording" : "Start recording"}
+                onClick={toggleRecord}
                 className="grid size-14 place-items-center rounded-full bg-primary text-primary-foreground ring-4 ring-lamp/15 transition-transform hover:scale-105"
               >
                 {recording ? (
@@ -115,6 +201,12 @@ export function OralVault() {
               </button>
             </div>
           </div>
+
+          {micError && (
+            <p role="alert" className="mt-4 text-sm text-destructive">
+              {micError}
+            </p>
+          )}
         </div>
 
         <div className="lg:col-span-2 rounded-2xl border border-border bg-card p-6">
@@ -162,7 +254,7 @@ export function OralVault() {
           <li key={r.id} className="flex flex-wrap items-center gap-4 px-5 py-4">
             <button
               aria-label={playing === r.id ? `Pause ${r.title}` : `Play ${r.title}`}
-              onClick={() => setPlaying(playing === r.id ? null : r.id)}
+              onClick={() => togglePlay(r)}
               className="grid size-9 shrink-0 place-items-center rounded-full border border-lamp/40 text-lamp hover:bg-lamp/10"
             >
               {playing === r.id ? "❚❚" : "▶"}
