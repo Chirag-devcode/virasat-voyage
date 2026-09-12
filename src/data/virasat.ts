@@ -56,19 +56,17 @@ export const MONUMENTS: Monument[] = [
     }
   },
   {
-    id: "kurukshetra",
-    state: "Haryana",
-    name: "Brahma Sarovar & Sacred Kurukshetra",
-    place: "Kurukshetra",
-    era: "c. 3000 BCE",
-    duration: "08:45",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Brahma_Sarovar%2C_Kurukshetra.jpg/1280px-Brahma_Sarovar%2C_Kurukshetra.jpg",
-    stories: {
-      English:
-        "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma, believed to be the cradle of civilization and the site where Brahma performed a yajna to create the universe. Spanning over 1,800 feet in length, it was chronicled by 11th-century scholar Al-Biruni as an engineering marvel. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna.",
-      "हिन्दी":
-        "ब्रह्म सरोवर कुरुक्षेत्र का एक अति प्राचीन और पवित्र जलाशय है, जिसका उल्लेख 11वीं शताब्दी में अल-बिरूनी ने भी अपनी पुस्तकों में किया था। इसी पावन भूमि पर भगवान श्रीकृष्ण ने अर्जुन को श्रीमद्भगवद्गीता का अमर उपदेश दिया था।"
-    }
+  id: "haryana",
+  state: "Haryana",
+  title: "Brahma Sarovar & Sacred Kurukshetra",
+  place: "Kurukshetra, Haryana",
+  period: "c. 3000 BCE",
+  duration: "08:45",
+  // Updated image link to the Mahabharata chariot / Gita sermon scene at Kurukshetra
+  image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=1200&auto=format&fit=crop",
+  description:
+    "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna during the Kurukshetra War.",
+}
   },
   {
     id: "kashi",
