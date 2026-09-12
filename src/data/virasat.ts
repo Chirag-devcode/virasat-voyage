@@ -58,16 +58,16 @@ export const MONUMENTS: Monument[] = [
   {
     id: "kurukshetra",
     state: "Haryana",
-    name: "Kurukshetra, Land of the Bhagavad Gita",
+    name: "Brahma Sarovar & Sacred Kurukshetra",
     place: "Kurukshetra",
     era: "c. 3000 BCE",
     duration: "08:45",
-    image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&q=80&w=1200",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Brahma_Sarovar_Kurukshetra.jpg/1200px-Brahma_Sarovar_Kurukshetra.jpg",
     stories: {
       English:
-        "The sacred battlefield of the Mahabharata war and the birthplace of the Bhagavad Gita. At Jyotisar, beneath an ancient banyan tree, Lord Krishna imparted the eternal discourse of Karma and Dharma to Arjuna.",
+        "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma, believed to be the cradle of civilization and the site where Brahma performed a yajna to create the universe. Spanning over 1,800 feet in length, it was chronicled by 11th-century scholar Al-Biruni as an engineering marvel. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna.",
       "हिन्दी":
-        "महाभारत की ऐतिहासिक रणभूमि और श्रीमद्भगवद्गीता की पावन जन्मस्थली। ज्योतिसर में पवित्र वटवृक्ष के नीचे भगवान श्रीकृष्ण ने अर्जुन को कर्म और धर्म का अमर संदेश दिया था।"
+        "ब्रह्म सरोवर कुरुक्षेत्र का एक अति प्राचीन और पवित्र जलाशय है, जिसका उल्लेख 11वीं शताब्दी में अल-बिरूनी ने भी अपनी पुस्तकों में किया था। इसी पावन भूमि पर भगवान श्रीकृष्ण ने अर्जुन को श्रीमद्भगवद्गीता का अमर उपदेश दिया था।"
     }
   },
   {
@@ -101,14 +101,16 @@ export const MONUMENTS: Monument[] = [
   {
     id: "khajuraho",
     state: "Madhya Pradesh",
-    name: "Khajuraho at First Light",
+    name: "Khajuraho Group of Temples",
     place: "Chhatarpur",
-    era: "c. 950 CE",
+    era: "c. 950–1050 CE",
     duration: "08:04",
-    image: "https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=1200",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Kandariya_Mahadev_Temple_Khajuraho.jpg/1200px-Kandariya_Mahadev_Temple_Khajuraho.jpg",
     stories: {
       English:
-        "Of eighty-five temples, twenty-five remain. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
+        "Built during the Chandela dynasty between 950 and 1050 CE, the Khajuraho temples represent the zenith of Nagara-style architecture. Of eighty-five original temples, twenty-five remain. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
+      "हिन्दी":
+        "चंदेल राजवंश द्वारा 950 से 1050 ईस्वी के बीच निर्मित, खजुराहो के मंदिर नागर शैली की वास्तुकला के उत्कृष्ट नमूने हैं। बलुआ पत्थर पर उकेरी गई इसकी मूर्तियां और कंदरिया महादेव मंदिर भारतीय कला की अमूल्य धरोहर हैं।"
     },
   },
   {
