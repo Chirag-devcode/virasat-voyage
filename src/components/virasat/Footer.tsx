@@ -86,7 +86,7 @@ links: { label: string; href: string }[];
 return ( <nav aria-label={heading}> <h3 className="mb-5 font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-lamp">
 {heading} </h3>
 
-```
+ 
   <ul className="space-y-3">
     {links.map((link) => (
       <li key={link.label}>
@@ -101,7 +101,7 @@ return ( <nav aria-label={heading}> <h3 className="mb-5 font-mono text-[10px] fo
     ))}
   </ul>
 </nav>
-```
+ 
 
 );
 }
@@ -114,7 +114,7 @@ const [error, setError] = useState("");
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 e.preventDefault();
 
-```
+ 
 const trimmedEmail = email.trim();
 
 if (!trimmedEmail) {
@@ -129,14 +129,14 @@ if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
 
 setError("");
 setSubmitted(true);
-```
+ 
 
 }
 
 return ( <footer className="relative overflow-hidden border-t border-border bg-background">
 {/* Subtle heritage divider */} <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lamp/40 to-transparent" />
 
-```
+ 
   <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
     {/* Heritage statement */}
     <div className="mb-12 flex flex-col gap-5 border-b border-border pb-10 sm:mb-14 sm:pb-12 md:flex-row md:items-end md:justify-between">
@@ -342,7 +342,7 @@ return ( <footer className="relative overflow-hidden border-t border-border bg-b
     </div>
   </div>
 </footer>
-```
+ 
 
 );
 }
