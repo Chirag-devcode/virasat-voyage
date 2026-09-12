@@ -2,7 +2,7 @@ import { ArrowDown, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { HeritageHologram } from "./HeritageHologram";
-
+import { Link } from '@tanstack/react-router';
 export function LandingExperience({ onEnter }: { onEnter: () => void }) {
   const [mounted, setMounted] = useState(false);
 
@@ -19,9 +19,18 @@ export function LandingExperience({ onEnter }: { onEnter: () => void }) {
         <span className="font-mono text-[9px] tracking-[0.32em] text-holo-cyan">A.I. · ARCHIVE</span>
       </div>
 
-      <div className="pointer-events-none absolute right-5 top-6 z-30 hidden items-center gap-2 font-mono text-[9px] tracking-[0.22em] text-muted-foreground sm:flex">
-        <span className="holo-status-dot h-1.5 w-1.5 rounded-full bg-holo-cyan" />
-        CULTURAL MEMORY ONLINE
+      <div className="absolute right-5 top-5 z-30 flex items-center gap-4 sm:right-8 sm:top-6">
+        <div className="pointer-events-none hidden items-center gap-2 font-mono text-[10px] tracking-wider text-holo-cyan/80 sm:flex">
+          <span className="holo-status-dot h-1.5 w-1.5 rounded-full bg-holo-cyan" />
+          CULTURAL MEMORY ONLINE
+        </div>
+
+        <Link
+          to="/login"
+          className="rounded-full border border-amber-400/40 bg-amber-500/10 px-4 py-1.5 font-mono text-xs font-semibold text-amber-300 backdrop-blur-md transition-all hover:border-amber-400 hover:bg-amber-400/20 hover:text-amber-200 hover:shadow-[0_0_15px_rgba(245,158,11,0.3)]"
+        >
+          Tourist Login →
+        </Link>
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-5 pb-7 pt-20 sm:pb-10 sm:pt-24">
