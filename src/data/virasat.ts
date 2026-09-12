@@ -153,7 +153,7 @@ export const MONUMENTS: Monument[] = [
       English:
         "A stone chariot of twenty-four wheels, each spoke a different measure of the day. Place a finger at the axle at noon and the shadow still tells the hour, eight hundred years after the sculptor set it.",
       "ଓଡ଼ିଆ":
-        "ଚବିଶ ଚକର ଏକ ପଥର ରଥ, ପ୍ରତ୍ୟେକ ଅରା ଦିନର ଏક ଭିନ୍ନ ମାપ।",
+        "ଚବିଶ ଚକର ଏକ ପଥର ରଥ, ପ୍ରତ୍ୟେକ ଅରା ଦିନର ଏକ ଭିନ୍ନ ମାପ।",
     },
   },
   {
