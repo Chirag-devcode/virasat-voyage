@@ -95,7 +95,7 @@ function Index() {
       </main>
 
       
-      </footer>
+      <Footer />
 
       <ChatWidget />
     </div>
