@@ -307,11 +307,11 @@ const LEAD: Record<ChatLang, Record<LeadKey, string>> = {
     monument: "अभिलेख में यह दर्ज है:",
     craft: "शिल्प के बारे में:",
     festival: "जानने योग्य त्योहार:",
-    oral: "मौखिक इतिहास रिकॉर्ड करना:",
+    oral: "मौखिक इतिहा�� रिकॉर्ड करना:",
     trail: "धरोहर यात्राएँ:",
     guru: "गुरु-शिष्य मास्टरक्लास:",
     figure: "उस व्यक्तित्व के बारे में:",
-    ask: "आप किसके बारे में जानना चाहेंगे?",
+    ask: "आप किसके बारे में जानना ���ाहेंगे?",
   },
   Bengali: {
     monument: "সংগ্রহে যা আছে:",
@@ -537,7 +537,7 @@ function localResponse(req: ChatRequest): string {
         local.length
           ? `From ${inFocus}: ${local.map((r) => `“${r.title}” — ${r.narrator}, in ${r.language} (${r.duration})`).join("; ")}.`
           : `The vault holds ${RECORDINGS.length} takes across six states.`
-      }\n\nOral traditions carry what no monument records: work songs, creation stories, ritual chants and family memory. Open the Oral Vault tab to listen, or ask me how to record one yourself.`;
+      }\n\nOral traditions carry what no monument records: work songs, creation stories, ritual chants and family memory. Open the Audio Visual Vault tab to listen, or ask me how to record one yourself.`;
     }
 
     case "trail": {

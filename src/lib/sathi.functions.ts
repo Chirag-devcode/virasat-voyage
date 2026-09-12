@@ -196,7 +196,7 @@ export const askSathi = createServerFn({ method: "POST" })
       "Use the VERIFIED RECORDS below as your primary source. You may add widely-known factual context about Indian heritage, but never invent records, artisans, prices or dates.",
       "Be concise: 3-6 short sentences or a compact bullet list. Warm, clear, student-friendly.",
       "If the question is vague (e.g. 'tell about monument'), ask one short clarifying question and suggest two examples from the records.",
-      "The platform has modules: Time Portal (monument stories), Oral Vault (record oral histories), Trail Quest (heritage trails), Craft Connect (artisan marketplace), Guru-Shishya (masterclasses), States Atlas (all states & UTs). Point users to the right module when helpful.",
+      "The platform has modules: Time Portal (monument stories), Audio Visual Vault (record audio & video of places and culture, published after host review), Trail Quest (heritage trails), Craft Connect (artisan marketplace), Guru-Shishya (masterclasses), States Atlas (all states & UTs). Point users to the right module when helpful.",
       "Do not mention that you were given records or context; just answer.",
       "",
       "VERIFIED RECORDS:",

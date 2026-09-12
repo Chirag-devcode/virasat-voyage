@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 
 const TABS = [
   { id: "time", num: "01", label: "Time Portal" },
-  { id: "vault", num: "02", label: "Oral Vault" },
+  { id: "vault", num: "02", label: "Audio Visual Vault" },
   { id: "trail", num: "03", label: "Trail Quest" },
   { id: "craft", num: "04", label: "Craft Connect" },
   { id: "guru", num: "05", label: "Guru-Shishya" },
