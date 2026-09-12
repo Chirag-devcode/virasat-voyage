@@ -66,7 +66,7 @@ export const MONUMENTS: Monument[] = [
   image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=1200&auto=format&fit=crop",
   description:
     "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna during the Kurukshetra War.",
-}
+
   },
   {
     id: "kashi",
