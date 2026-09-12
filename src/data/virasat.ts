@@ -62,7 +62,7 @@ export const MONUMENTS: Monument[] = [
     place: "Kurukshetra",
     era: "c. 3000 BCE",
     duration: "08:45",
-    image: "https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&q=80&w=1200",
+    image: "https://share.google/mZBFocX7UpJJ8Vsik",
     stories: {
       English:
         "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma, believed to be the cradle of civilization and the site where Brahma performed a yajna to create the universe. Spanning over 1,800 feet in length, it was chronicled by 11th-century scholar Al-Biruni as an engineering marvel. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna.",
@@ -105,7 +105,7 @@ export const MONUMENTS: Monument[] = [
     place: "Chhatarpur",
     era: "c. 950–1050 CE",
     duration: "08:04",
-    image: "https://images.unsplash.com/photo-1608665042220-424a187e1f13?auto=format&fit=crop&q=80&w=1200",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeGiuuQnQOf2NDJ4-YAc3n4Hlv_ni8DQyvO81_OHZ0bZ2PKpdKVFs0doE&s=10",
     stories: {
       English:
         "Built during the Chandela dynasty between 950 and 1050 CE, the Khajuraho temples represent the zenith of Nagara-style architecture. Of eighty-five original temples, twenty-five remain, featuring the towering Kandariya Mahadeva Temple. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
@@ -153,7 +153,7 @@ export const MONUMENTS: Monument[] = [
       English:
         "A stone chariot of twenty-four wheels, each spoke a different measure of the day. Place a finger at the axle at noon and the shadow still tells the hour, eight hundred years after the sculptor set it.",
       "ଓଡ଼ିଆ":
-        "ଚବିଶ ଚକର ଏକ ପଥର ରଥ, ପ୍ରତ୍ୟେକ ଅରା ଦିନର ଏକ ଭିନ୍ନ ମାପ।",
+        "ଚବିଶ ଚକର ଏକ ପଥର ରଥ, ପ୍ରତ୍ୟେକ ଅରା ଦିନର ଏକ ଭିନ୍ନ ମାપ।",
     },
   },
   {
