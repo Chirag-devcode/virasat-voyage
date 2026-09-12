@@ -108,9 +108,9 @@ export const MONUMENTS: Monument[] = [
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Kandariya_Mahadev_Temple_Khajuraho.jpg/1200px-Kandariya_Mahadev_Temple_Khajuraho.jpg",
     stories: {
       English:
-        "Built during the Chandela dynasty between 950 and 1050 CE, the Khajuraho temples represent the zenith of Nagara-style architecture. Of eighty-five original temples, twenty-five remain. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
+        "Built during the Chandela dynasty between 950 and 1050 CE, the Khajuraho temples represent the zenith of Nagara-style architecture. Of eighty-five original temples, twenty-five remain, featuring the towering Kandariya Mahadeva Temple. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
       "हिन्दी":
-        "चंदेल राजवंश द्वारा 950 से 1050 ईस्वी के बीच निर्मित, खजुराहो के मंदिर नागर शैली की वास्तुकला के उत्कृष्ट नमूने हैं। बलुआ पत्थर पर उकेरी गई इसकी मूर्तियां और कंदरिया महादेव मंदिर भारतीय कला की अमूल्य धरोहर हैं।"
+        "चंदेल राजवंश द्वारा 950 से 1050 ईस्वी के बीच निर्मित, खजुराहो के मंदिर नागर शैली की वास्तुकला के उत्कृष्ट नमूने हैं। बलुआ पत्थर पर उकेरी गई इसकी मूर्तियां और भव्य कंदरिया महादेव मंदिर भारतीय कला की अमूल्य धरोहर हैं।"
     },
   },
   {
