@@ -1,249 +1,246 @@
-import { useMemo, useState } from "react";
-import { MapPin, Search, X } from "lucide-react";
-import { useStatesUts } from "@/services/hooks";
-import { imagesForState } from "@/data/stateImages";
-import { distinct } from "@/services/heritage";
-import type { StateUT } from "@/types/database";
+import React, { useState } from "react";
+import { Compass, ShieldCheck, RotateCcw, CheckCircle2, XCircle, ArrowRight, MapPin } from "lucide-react";
+import { TRAIL, type TrailStop } from "@/data/virasat";
 
-function ChipList({ label, items }: { label: string; items: string[] | null }) {
-  if (!items?.length) return null;
-  return (
-    <div>
-      <p className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground">{label.toUpperCase()}</p>
-      <div className="mt-2 flex flex-wrap gap-1.5">
-        {items.map((i) => (
-          <span key={i} className="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">
-            {i}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
+const FIRST = TRAIL[0] as TrailStop;
 
-export function StatesAtlas() {
-  const { data: states = [], isLoading, isError } = useStatesUts();
-  const [region, setRegion] = useState("All");
-  const [search, setSearch] = useState("");
-  const [open, setOpen] = useState<StateUT | null>(null);
+export function TrailQuest() {
+  const [activeId, setActiveId] = useState<string | number>(FIRST.id);
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [score, setScore] = useState(0);
 
-  const regions = useMemo(() => distinct(states, (s) => s.region), [states]);
-  const filtered = useMemo(
-    () =>
-      states.filter((s) => {
-        if (region !== "All" && s.region !== region) return false;
-        if (!search.trim()) return true;
-        const t = search.trim().toLowerCase();
-        return (
-          s.state_ut?.toLowerCase().includes(t) ||
-          s.capital?.toLowerCase().includes(t) ||
-          s.signature_heritage?.toLowerCase().includes(t)
-        );
-      }),
-    [states, region, search],
-  );
+  const active = TRAIL.find((t) => t.id === activeId) || FIRST;
+  const picked = answers[active.id];
+  const answered = picked !== undefined;
+  const cleared = TRAIL.filter((t) => answers[t.id] === t.answer).length;
+  const attempted = Object.keys(answers).length;
+
+  const choose = (i: number) => {
+    if (answered) return;
+    setAnswers((a) => ({ ...a, [active.id]: i }));
+    if (i === active.answer) setScore((s) => s + active.points);
+  };
+
+  const reset = () => {
+    setAnswers({});
+    setScore(0);
+    setActiveId(FIRST.id);
+  };
+
+  const nextIndex = TRAIL.findIndex((t) => t.id === activeId) + 1;
+  const nextStop = TRAIL[nextIndex];
 
   return (
-    <div className="animate-rise pb-12 pt-4">
-      <p className="eyebrow">(f) States Atlas</p>
-      <h1 className="mt-3 font-display text-4xl italic leading-[1.05] text-balance sm:text-5xl">
-        Twenty-eight states,
-        <br />
-        one living map.
-      </h1>
-      <p className="mt-4 max-w-[46ch] text-pretty text-muted-foreground">
-        Every state and union territory from the archive — its languages, festivals, crafts,
-        performing arts and cuisine, drawn live from the heritage dataset.
-      </p>
-
-      <div className="mt-6 flex flex-wrap items-center gap-3">
-        <div className="relative">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search a state, capital or heritage…"
-            className="w-72 rounded-md border border-border bg-surface py-2 pl-9 pr-3 text-sm text-foreground outline-none focus:border-lamp"
-          />
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {["All", ...regions].map((r) => (
-            <button
-              key={r}
-              onClick={() => setRegion(r)}
-              className={`rounded-full px-3.5 py-1.5 text-xs transition-colors ${
-                r === region
-                  ? "bg-primary text-primary-foreground"
-                  : "border border-border text-muted-foreground hover:border-lamp/50 hover:text-foreground"
-              }`}
-            >
-              {r}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {isLoading && (
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-40 animate-pulse rounded-xl border border-border bg-card" />
-          ))}
-        </div>
-      )}
-      {isError && (
-        <p className="mt-8 text-sm text-muted-foreground">
-          Could not load the states archive. Please try again in a moment.
-        </p>
-      )}
-
-      {!isLoading && !isError && (
-        <>
-          <div className="mt-6 flex items-center gap-4">
-            <span className="font-mono text-[11px] tracking-[0.3em] text-muted-foreground">ATLAS · INDIA</span>
-            <div className="h-px flex-1 bg-border" />
-            <span className="font-mono text-[11px] text-muted-foreground">
-              {String(filtered.length).padStart(2, "0")} states & UTs
-            </span>
+    <section id="trail-quest" className="w-full bg-slate-50 text-slate-900 py-12 px-6 border-b border-slate-200">
+      <div className="max-w-7xl mx-auto space-y-8">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-300 pb-5">
+          <div>
+            <div className="flex items-center gap-2 text-amber-700 font-mono text-xs font-bold tracking-widest uppercase mb-1">
+              <Compass className="w-4 h-4 text-amber-600" /> SECTION (C) · HERITAGE TRAIL QUEST
+            </div>
+            <h1 className="text-3xl font-serif font-bold text-slate-900">
+              National Heritage Trail & Knowledge Quest
+            </h1>
+            <p className="text-slate-600 text-sm mt-1 max-w-2xl">
+              Six heritage nodes across six states. Answer the keeper's question at each stop to evaluate cultural literacy based on Archaeological Survey of India archives.
+            </p>
           </div>
 
-          <div className="mt-6 grid gap-5 pb-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((s) => (
-              <article
-                key={s.id}
-                className="flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-lamp/40"
-              >
-                {imagesForState(s.state_ut)[0] && (
-                  <div className="relative h-40 w-full shrink-0 overflow-hidden">
-                    <img
-                      src={imagesForState(s.state_ut)[0]}
-                      alt={`${s.state_ut} heritage`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="bg-slate-900 text-amber-400 px-4 py-2 rounded-lg font-mono text-xs font-bold border border-slate-800 shadow-sm text-center">
+              <div className="text-[10px] text-slate-400 font-sans uppercase tracking-wider">Score</div>
+              <div className="text-base text-amber-400">{score.toLocaleString("en-IN")} PTS</div>
+            </div>
+            <div className="bg-white px-4 py-2 rounded-lg border border-slate-300 shadow-sm text-center">
+              <div className="text-[10px] text-slate-500 font-sans uppercase tracking-wider font-semibold">Cleared</div>
+              <div className="text-base font-bold text-slate-900 font-mono">
+                {cleared} <span className="text-xs text-slate-500 font-normal">/ {TRAIL.length}</span>
+              </div>
+            </div>
+            <button
+              onClick={reset}
+              className="flex items-center gap-1.5 bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold px-4 py-3 rounded-lg border border-slate-300 shadow-sm transition-all"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              Reset Trail
+            </button>
+          </div>
+        </div>
+
+        {/* Interactive Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column: Interactive Map */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between space-y-4">
+            <div>
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                <span className="font-mono text-xs font-bold text-slate-700 tracking-wider flex items-center gap-1.5 uppercase">
+                  <MapPin className="w-4 h-4 text-amber-600" /> Cartographic Trail Map
+                </span>
+                <span className="text-xs font-mono font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">
+                  {attempted} OF {TRAIL.length} STOPS ATTEMPTED
+                </span>
+              </div>
+
+              <div className="relative aspect-4/3 overflow-hidden rounded-lg bg-slate-900 border border-slate-800 shadow-inner">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
+
+                <svg className="absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <polyline
+                    points={TRAIL.map((t) => `${t.x},${t.y}`).join(" ")}
+                    fill="none"
+                    stroke="#fbbf24"
+                    strokeWidth="0.6"
+                    strokeDasharray="2 2"
+                    className="opacity-70"
+                  />
+                </svg>
+
+                {TRAIL.map((t, i) => {
+                  const done = answers[t.id] === t.answer;
+                  const isActive = t.id === activeId;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setActiveId(t.id)}
+                      style={{ left: `${t.x}%`, top: `${t.y}%` }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 text-center group z-10 focus:outline-none"
+                    >
+                      <span
+                        className={`grid size-8 place-items-center rounded-full font-mono text-xs font-bold transition-all shadow-md ${
+                          done
+                            ? "bg-emerald-600 text-white ring-2 ring-emerald-400"
+                            : isActive
+                              ? "bg-amber-500 text-slate-950 ring-4 ring-amber-400/30 scale-110"
+                              : "bg-slate-800 text-slate-300 border border-slate-600 hover:border-amber-400"
+                        }`}
+                      >
+                        {done ? "✓" : i + 1}
+                      </span>
+                      <span
+                        className={`mt-1.5 block font-mono text-[10px] font-bold tracking-wider whitespace-nowrap px-1.5 py-0.5 rounded backdrop-blur-md ${
+                          isActive
+                            ? "bg-amber-500/90 text-slate-950"
+                            : "bg-slate-900/80 text-slate-300 group-hover:text-amber-300"
+                        }`}
+                      >
+                        {t.site}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Select any node marker on the cartographic map above to view stop questions.</span>
+            </div>
+          </div>
+
+          {/* Right Column: Question Panel */}
+          <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <span className="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded border border-amber-300 uppercase font-mono">
+                  STOP {TRAIL.findIndex((t) => t.id === activeId) + 1} · {active.state}
+                </span>
+                <span className="font-mono text-xs font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded border border-slate-200">
+                  +{active.points} PTS
+                </span>
+              </div>
+
+              <h2 className="text-2xl font-serif font-bold text-slate-900">
+                {active.site}
+              </h2>
+
+              <p className="text-slate-700 text-sm font-medium leading-relaxed">
+                {active.question}
+              </p>
+
+              {/* Options */}
+              <div className="space-y-2.5 pt-2">
+                {active.options.map((opt, i) => {
+                  const isAnswer = i === active.answer;
+                  const isPicked = picked === i;
+
+                  let cls = "bg-slate-50 text-slate-800 border-slate-200 hover:bg-slate-100 hover:border-slate-300";
+                  if (answered) {
+                    if (isAnswer) {
+                      cls = "bg-emerald-50 text-emerald-950 border-emerald-500 font-bold ring-1 ring-emerald-500";
+                    } else if (isPicked) {
+                      cls = "bg-rose-50 text-rose-950 border-rose-500 font-bold ring-1 ring-rose-500";
+                    } else {
+                      cls = "bg-slate-50 text-slate-400 border-slate-200 opacity-60";
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={opt}
+                      onClick={() => choose(i)}
+                      disabled={answered}
+                      className={`w-full text-left p-3.5 rounded-lg border text-sm transition-all flex items-center justify-between ${cls}`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                          {String.fromCharCode(65 + i)}
+                        </span>
+                        <span>{opt}</span>
+                      </div>
+                      {answered && isAnswer && <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />}
+                      {answered && isPicked && !isAnswer && <XCircle className="w-5 h-5 text-rose-600 shrink-0" />}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Fact Box & Navigation */}
+            {answered && (
+              <div className="space-y-4 pt-4 border-t border-slate-100">
+                <div
+                  className={`p-4 rounded-lg border text-xs leading-relaxed ${
+                    picked === active.answer
+                      ? "bg-emerald-50 border-emerald-200 text-emerald-950"
+                      : "bg-rose-50 border-rose-200 text-rose-950"
+                  }`}
+                >
+                  <p className="font-mono font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                    {picked === active.answer ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                        CORRECT VERIFICATION (+{active.points} POINTS)
+                      </>
+                    ) : (
+                      <>
+                        <XCircle className="w-4 h-4 text-rose-600" />
+                        INCORRECT RESPONSE
+                      </>
+                    )}
+                  </p>
+                  <p className="mt-1 text-slate-800 text-xs">{active.fact}</p>
+                </div>
+
+                {nextStop ? (
+                  <button
+                    onClick={() => setActiveId(nextStop.id)}
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-bold py-3 rounded-lg border border-slate-800 shadow transition-all flex items-center justify-center gap-2"
+                  >
+                    PROCEED TO NEXT STOP: {nextStop.site.toUpperCase()} <ArrowRight className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <div className="p-4 bg-slate-900 rounded-lg text-center text-amber-400 font-serif font-bold text-base border border-slate-800 shadow">
+                    Trail Complete! Final Score: {score.toLocaleString("en-IN")} Points.
                   </div>
                 )}
-                <div className="flex flex-1 flex-col p-5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-lamp">
-                      {(s.region ?? "INDIA").toUpperCase()}
-                    </span>
-                    <span className="flex items-center gap-1 font-mono text-[10px] text-muted-foreground">
-                      <MapPin className="h-3 w-3" /> {s.capital}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-display text-lg italic text-balance">{s.state_ut}</h3>
-                  <p className="mt-2 line-clamp-2 text-sm text-pretty text-muted-foreground">
-                    {s.signature_heritage}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {(s.major_festivals ?? []).slice(0, 2).map((f) => (
-                      <span key={f} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
-                        {f}
-                      </span>
-                    ))}
-                    {(s.signature_crafts ?? []).slice(0, 1).map((c) => (
-                      <span key={c} className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
-                        {c}
-                      </span>
-                    ))}
-                  </div>
-                  <button onClick={() => setOpen(s)} className="mt-4 self-start text-sm text-lamp hover:text-lamp-soft">
-                    Open profile →
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <p className="mt-8 text-sm text-muted-foreground">No states match that search.</p>
-          )}
-        </>
-      )}
-
-      {open && (
-        <div
-          className="fixed inset-0 z-50 grid place-items-center bg-background/85 p-5 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setOpen(null)}
-        >
-          <div
-            className="max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-lamp/30 bg-popover shadow-lamp animate-rise"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {(() => {
-              const gallery = imagesForState(open.state_ut);
-              const hero = gallery[0];
-              return (
-                <>
-                  <div className="relative">
-                    {hero ? (
-                      <img
-                        src={hero}
-                        alt={`${open.state_ut} heritage`}
-                        className="h-56 w-full object-cover sm:h-64"
-                      />
-                    ) : (
-                      <div className="h-40 w-full bg-card" />
-                    )}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-popover via-popover/80 to-transparent" />
-                    <button
-                      onClick={() => setOpen(null)}
-                      aria-label="Close"
-                      className="absolute right-4 top-4 rounded-full border border-border bg-background/70 p-2 text-muted-foreground backdrop-blur hover:text-foreground"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                    <div className="absolute inset-x-6 bottom-4">
-                      <p className="eyebrow">{open.region}</p>
-                      <h3 className="mt-1 font-display text-3xl italic text-lamp-soft">{open.state_ut}</h3>
-                      <p className="mt-1 font-mono text-[10px] tracking-widest text-muted-foreground">
-                        CAPITAL · {(open.capital ?? "—").toUpperCase()}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-6 sm:p-7">
-                    <p className="text-sm leading-relaxed text-muted-foreground">{open.signature_heritage}</p>
-
-                    {gallery.length > 1 && (
-                      <div className="mt-5 flex gap-2">
-                        {gallery.slice(1, 4).map((src) => (
-                          <img
-                            key={src}
-                            src={src}
-                            alt={`${open.state_ut} heritage`}
-                            loading="lazy"
-                            className="h-24 w-full flex-1 rounded-lg object-cover sm:h-28"
-                          />
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                      <ChipList label="Languages" items={open.major_languages} />
-                      <ChipList label="Major festivals" items={open.major_festivals} />
-                      <ChipList label="Signature crafts" items={open.signature_crafts} />
-                      <ChipList label="Performing arts" items={open.signature_performing_arts} />
-                      <ChipList label="Cuisine highlights" items={open.cuisine_highlights} />
-                      <ChipList label="Heritage tourism anchors" items={open.heritage_tourism_anchors} />
-                    </div>
-
-                    <button
-                      onClick={() => setOpen(null)}
-                      className="mt-7 w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </>
-              );
-            })()}
+              </div>
+            )}
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }
+
+export default TrailQuest;
