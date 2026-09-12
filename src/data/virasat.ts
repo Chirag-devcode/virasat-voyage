@@ -56,17 +56,17 @@ export const MONUMENTS: Monument[] = [
     }
   },
   {
-  id: "haryana",
-  state: "Haryana",
-  title: "Brahma Sarovar & Sacred Kurukshetra",
-  place: "Kurukshetra, Haryana",
-  period: "c. 3000 BCE",
-  duration: "08:45",
-  // Updated image link to the Mahabharata chariot / Gita sermon scene at Kurukshetra
-  image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=1200&auto=format&fit=crop",
-  description:
-    "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna during the Kurukshetra War.",
-
+    id: "haryana",
+    state: "Haryana",
+    name: "Brahma Sarovar & Sacred Kurukshetra",
+    place: "Kurukshetra, Haryana",
+    era: "c. 3000 BCE",
+    duration: "08:45",
+    image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?q=80&w=1200&auto=format&fit=crop",
+    stories: {
+      English:
+        "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna during the Kurukshetra War."
+    }
   },
   {
     id: "kashi",
@@ -166,7 +166,7 @@ export const MONUMENTS: Monument[] = [
       English:
         "Clay, bamboo and thatch on the world's largest river island — where the bronzes were lost to the Brahmaputra and only the verses were kept. The satras move house each decade as the river takes the bank.",
       "অসমীয়া":
-        "পৃথিৱীৰ આটাইતકৈ ডাঙৰ নদী দ্বীপત মাটি, বাঁহ আৰু খেৰৰ সত্ৰ — য'ত ব্ৰহ্মপুত্ৰই धातুবোৰ লৈ গ'ল, ৰৈ গ'ল কেৱল পদবোৰ।",
+        "পৃথিৱীৰ આটাইતકৈ ডাঙৰ নদী द्वीपત মাটি, বাঁহ আৰু খেৰৰ সত্ৰ — য'ত ব্ৰহ্মপুত্ৰই धातুবোৰ লৈ গ'ল, ৰৈ গ'ল কেৱল পদবোৰ।",
     },
   },
 ];
