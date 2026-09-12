@@ -43,14 +43,14 @@ export const MONUMENTS: Monument[] = [
     state: "Uttar Pradesh",
     name: "The Taj Mahal \n Symbol of Love",
     place: "Agra",
-    era: "1571 CE",
+    era: "1632 CE",
     duration: "07:12",
     stories: {
       English:
-        "Inside the Panch Mahal, the western colonnade was carved to hold the shadow of the sun at a single hour — a clock written in stone. Eighty-four columns, no two alike, each cut by a different guild so that the emperor might read the empire in a single courtyard.",
+        "Commissioned in 1632 by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, this ivory-white marble mausoleum on the banks of the Yamuna River stands as an eternal symbol of love and a masterpiece of Mughal architecture.",
       "हिन्दी":
-        "पंच महल के भीतर, पश्चिमी स्तंभावली को इस तरह तराशा गया कि वह दिन के एक निश्चित पहर की छाया को थाम ले — पत्थर में लिखी एक घड़ी। चौरासी स्तंभ, कोई भी एक-दूसरे जैसा नहीं।",
-    },
+        "मुगल सम्राट शाहजहाँ द्वारा 1632 में अपनी प्रिय पत्नी मुमताज़ महल की याद में बनवाया गया, यमुना नदी के तट पर स्थित यह सफेद संगमरमर का मकबरा प्रेम का एक अमर प्रतीक और स्थापत्य कला का अद्भुत नमूना है।"
+    }
   },
   {
     id: "kashi",
