@@ -1,12 +1,4 @@
-import { useState } from "react";
-import {
-ArrowUpRight,
-Check,
-Instagram,
-Youtube,
-Facebook,
-Linkedin,
-} from "lucide-react";
+import React, { useState } from "react";
 
 const EXPLORE_LINKS = [
 { label: "Heritage", href: "#explore" },
@@ -107,30 +99,104 @@ return ( <nav aria-label={heading}> <h3 className="mb-5 font-mono text-[10px] fo
 }
 
 export function Footer() {
-const [email, setEmail] = useState("");
-const [submitted, setSubmitted] = useState(false);
-const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
 
-function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-e.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      alert(`Subscribed with: ${email}`);
+      setEmail("");
+    }
+  };
 
+<<<<<<< HEAD
+  return (
+    <footer className="w-full bg-[#FAF8F5] text-stone-800 py-12 px-6 font-sans border-t border-stone-200">
+      <div className="max-w-md mx-auto space-y-8">
+        
+        {/* Logo & Brand Description */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full border border-stone-400 flex items-center justify-center p-1 bg-white shadow-sm">
+              <span className="font-serif italic text-lg font-bold text-stone-700">इव</span>
+            </div>
+            <div>
+              <h2 className="font-serif text-lg tracking-widest uppercase font-semibold text-stone-900 leading-tight">
+                INDIAN VIRASAT
+              </h2>
+              <p className="text-[10px] tracking-widest text-stone-500 uppercase">
+                Tradition of India
+              </p>
+            </div>
+          </div>
+=======
  
 const trimmedEmail = email.trim();
+>>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
 
-if (!trimmedEmail) {
-  setError("Please enter your email address.");
-  return;
-}
+          <p className="text-sm text-stone-600 leading-relaxed">
+            Blending tradition with modern trends, Indian Virasat celebrates the essence of today's woman through timeless ethnic, fusion, and western styles crafted with elegance and detail.
+          </p>
 
-if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-  setError("Please enter a valid email address.");
-  return;
-}
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 pt-1">
+            {/* Facebook */}
+            <a href="#" className="w-8 h-8 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            {/* Instagram */}
+            <a href="#" className="w-8 h-8 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            {/* YouTube */}
+            <a href="#" className="w-8 h-8 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            {/* X / Twitter */}
+            <a href="#" className="w-8 h-8 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            {/* Pinterest */}
+            <a href="#" className="w-8 h-8 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-700 transition">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
 
+<<<<<<< HEAD
+        {/* Info & Support */}
+        <div className="space-y-3 pt-2">
+          <h3 className="font-serif italic font-semibold text-base tracking-wider text-stone-900 uppercase">
+            INFO & SUPPORT
+          </h3>
+          <ul className="space-y-2.5 text-sm text-stone-700">
+            <li><a href="#" className="hover:underline">About Us</a></li>
+            <li><a href="#" className="hover:underline">Privacy policy</a></li>
+            <li><a href="#" className="hover:underline">Terms & Condition</a></li>
+            <li><a href="#" className="hover:underline">Refund & Exchange Policy</a></li>
+            <li><a href="#" className="hover:underline">Shipping & Delivery Policy</a></li>
+          </ul>
+        </div>
+=======
 setError("");
 setSubmitted(true);
  
+>>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
 
+<<<<<<< HEAD
+        {/* Quick Links */}
+        <div className="space-y-3 pt-2">
+          <h3 className="font-serif italic font-semibold text-base tracking-wider text-stone-900 uppercase">
+            QUICK LINKS
+          </h3>
+          <ul className="space-y-2.5 text-sm text-stone-700">
+            <li><a href="#" className="hover:underline">Orders</a></li>
+            <li><a href="#" className="hover:underline">Search</a></li>
+            <li><a href="#" className="hover:underline">Blogs</a></li>
+            <li><a href="#" className="hover:underline">Profile</a></li>
+            <li><a href="#" className="hover:underline">Contact Us</a></li>
+          </ul>
+=======
 }
 
 return ( <footer className="relative overflow-hidden border-t border-border bg-background">
@@ -213,136 +279,59 @@ return ( <footer className="relative overflow-hidden border-t border-border bg-b
           >
             <XIcon className="h-4 w-4" />
           </a>
+>>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
         </div>
 
-        <p className="mt-8 max-w-xs font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50">
-          Stories · Traditions · Places · People
-        </p>
-      </div>
+        {/* Join Our Email List */}
+        <div className="space-y-3 pt-2">
+          <h3 className="font-serif italic font-semibold text-base tracking-wider text-stone-900 uppercase">
+            JOIN OUR EMAIL LIST
+          </h3>
+          <p className="text-sm text-stone-600">
+            Get exclusive deals and early access to new products.
+          </p>
 
-      {/* Explore */}
-      <div className="lg:col-span-2">
-        <LinkColumn heading="Explore" links={EXPLORE_LINKS} />
-      </div>
-
-      {/* Virasat AI */}
-      <div className="lg:col-span-2">
-        <LinkColumn heading="Virasat AI" links={VIRASAT_AI_LINKS} />
-      </div>
-
-      {/* Resources */}
-      <div className="lg:col-span-2">
-        <LinkColumn heading="Resources" links={RESOURCE_LINKS} />
-      </div>
-
-      {/* Newsletter */}
-      <div className="sm:col-span-2 lg:col-span-2">
-        <h3 className="mb-5 font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-lamp">
-          Stay Connected
-        </h3>
-
-        <p className="mb-5 text-sm leading-6 text-muted-foreground">
-          Stay connected with India's living heritage. Get stories,
-          discoveries, and cultural experiences delivered to you.
-        </p>
-
-        {submitted ? (
-          <div
-            role="status"
-            className="flex items-start gap-3 rounded-lg border border-lamp/30 bg-lamp/5 px-4 py-3.5 text-sm text-lamp-soft"
-          >
-            <Check className="mt-0.5 h-4 w-4 shrink-0" />
-
-            <div>
-              <p className="font-medium">You're subscribed.</p>
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                Thank you for staying connected.
-              </p>
-            </div>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} noValidate className="space-y-2.5">
-            <label htmlFor="footer-email" className="sr-only">
-              Enter your email
-            </label>
-
+          <form onSubmit={handleSubmit} className="relative mt-3">
             <input
-              id="footer-email"
               type="email"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (error) setError("");
-              }}
-              placeholder="Enter your email"
-              autoComplete="email"
-              aria-invalid={Boolean(error)}
-              aria-describedby={
-                error ? "footer-email-error" : undefined
-              }
-              className="h-11 w-full rounded-lg border border-border bg-surface px-3.5 text-sm text-foreground outline-none transition-all duration-200 placeholder:text-muted-foreground/50 focus:border-lamp/50 focus:ring-2 focus:ring-lamp/10"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email address"
+              required
+              className="w-full py-3.5 pl-6 pr-14 rounded-full border border-stone-300 text-sm text-stone-800 bg-white placeholder-stone-400 focus:outline-none focus:border-stone-500 shadow-sm"
             />
-
-            {error && (
-              <p
-                id="footer-email-error"
-                className="px-1 text-xs text-destructive"
-                role="alert"
-              >
-                {error}
-              </p>
-            )}
-
-            <button
-              type="submit"
-              className="group flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-lamp/90 px-4 font-mono text-[10px] font-medium tracking-[0.2em] text-primary-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-lamp hover:shadow-lg hover:shadow-lamp/10 active:translate-y-0"
+            {/* Floating WhatsApp Button */}
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md hover:bg-emerald-600 transition"
+              title="Chat on WhatsApp"
             >
-              SUBSCRIBE
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </button>
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+            </a>
           </form>
-        )}
+        </div>
+
+        {/* Copyright Footer */}
+        <div className="pt-6 text-center text-xs text-stone-500 font-sans tracking-wide">
+          © 2026 Indianvirasat
+        </div>
+
       </div>
-    </div>
-
-    {/* Bottom bar */}
-    <div className="mt-14 border-t border-border pt-6 sm:mt-16">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs leading-5 text-muted-foreground">
-          © 2026 Virasat AI. Preserving India's heritage, one story at a
-          time.
-        </p>
-
-        <nav
-          aria-label="Legal"
-          className="flex flex-wrap items-center gap-x-5 gap-y-2"
-        >
-          <a
-            href="#explore"
-            className="text-xs text-muted-foreground transition-colors hover:text-lamp-soft"
-          >
-            Privacy
-          </a>
-
-          <a
-            href="#explore"
-            className="text-xs text-muted-foreground transition-colors hover:text-lamp-soft"
-          >
-            Terms
-          </a>
-
-          <a
-            href="#explore"
-            className="text-xs text-muted-foreground transition-colors hover:text-lamp-soft"
-          >
-            Contact
-          </a>
-        </nav>
-      </div>
+<<<<<<< HEAD
+    </footer>
+  );
+=======
     </div>
   </div>
 </footer>
  
 
 );
+>>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
 }
+
+export default Footer;
