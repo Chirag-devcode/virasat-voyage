@@ -41,7 +41,7 @@ export const MONUMENTS: Monument[] = [
   {
     id: "Agra",
     state: "Uttar Pradesh",
-    name: "The Taj Mahal \n Symbol of Love",
+    name: "The Taj Mahal \n Symbol of Love",]]
     place: "Agra",
     era: "1632 CE",
     duration: "07:12",
