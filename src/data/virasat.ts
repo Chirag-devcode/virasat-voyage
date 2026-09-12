@@ -62,7 +62,7 @@ export const MONUMENTS: Monument[] = [
     place: "Kurukshetra",
     era: "c. 3000 BCE",
     duration: "08:45",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Brahma_Sarovar_Kurukshetra.jpg/1200px-Brahma_Sarovar_Kurukshetra.jpg",
+    image: "https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma, believed to be the cradle of civilization and the site where Brahma performed a yajna to create the universe. Spanning over 1,800 feet in length, it was chronicled by 11th-century scholar Al-Biruni as an engineering marvel. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna.",
@@ -105,7 +105,7 @@ export const MONUMENTS: Monument[] = [
     place: "Chhatarpur",
     era: "c. 950–1050 CE",
     duration: "08:04",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Kandariya_Mahadev_Temple_Khajuraho.jpg/1200px-Kandariya_Mahadev_Temple_Khajuraho.jpg",
+    image: "https://images.unsplash.com/photo-1608665042220-424a187e1f13?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Built during the Chandela dynasty between 950 and 1050 CE, the Khajuraho temples represent the zenith of Nagara-style architecture. Of eighty-five original temples, twenty-five remain, featuring the towering Kandariya Mahadeva Temple. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
