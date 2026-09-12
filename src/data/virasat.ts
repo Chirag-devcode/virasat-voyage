@@ -35,6 +35,7 @@ export type Monument = {
   place: string;
   era: string;
   duration: string;
+  image: string;
   stories: Partial<Record<Language, string>> & { English: string };
 };
 
@@ -42,10 +43,11 @@ export const MONUMENTS: Monument[] = [
   {
     id: "Agra",
     state: "Uttar Pradesh",
-    name: "The Taj Mahal \n Symbol of Love",
+    name: "The Taj Mahal, Symbol of Love",
     place: "Agra",
     era: "1632 CE",
     duration: "07:12",
+    image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Commissioned in 1632 by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, this ivory-white marble mausoleum on the banks of the Yamuna River stands as an eternal symbol of love and a masterpiece of Mughal architecture.",
@@ -56,15 +58,16 @@ export const MONUMENTS: Monument[] = [
   {
     id: "kurukshetra",
     state: "Haryana",
-    name: "Kurukshetra \n Land of the Bhagavad Gita",
+    name: "Kurukshetra, Land of the Bhagavad Gita",
     place: "Kurukshetra",
     era: "c. 3000 BCE",
     duration: "08:45",
+    image: "https://images.unsplash.com/photo-1609947017136-9ede29d5921f?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
-        "The sacred ground of the Mahabharata and the birthplace of the Bhagavad Gita. At Jyotisar, beneath a holy banyan tree, Lord Krishna imparted the immortal discourse of Karma and Dharma to Arjuna.",
+        "The sacred battlefield of the Mahabharata war and the birthplace of the Bhagavad Gita. At Jyotisar, beneath an ancient banyan tree, Lord Krishna imparted the eternal discourse of Karma and Dharma to Arjuna.",
       "हिन्दी":
-        "महाभारत की ऐतिहासिक भूमि और श्रीमद्भगवद्गीता की जन्मस्थली। ज्योतिसर में पवित्र वटवृक्ष के नीचे भगवान श्रीकृष्ण ने अर्जुन को कर्म और धर्म का अमर संदेश दिया था।"
+        "महाभारत की ऐतिहासिक रणभूमि और श्रीमद्भगवद्गीता की पावन जन्मस्थली। ज्योतिसर में पवित्र वटवृक्ष के नीचे भगवान श्रीकृष्ण ने अर्जुन को कर्म और धर्म का अमर संदेश दिया था।"
     }
   },
   {
@@ -74,6 +77,7 @@ export const MONUMENTS: Monument[] = [
     place: "Varanasi",
     era: "c. 1780 CE",
     duration: "05:26",
+    image: "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Eighty-eight ghats descend into the Ganga, each built by a different kingdom paying for a place at the river's edge. The stone steps record floods as faint horizontal scars — a ledger of two centuries of monsoons.",
@@ -86,6 +90,7 @@ export const MONUMENTS: Monument[] = [
     place: "Patan",
     era: "1063 CE",
     duration: "06:40",
+    image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "A queen built a staircase seven storeys down into the earth to find water, and lined it with five hundred sculptures facing inward. Silted over for eight centuries, the river itself preserved what it buried.",
@@ -100,6 +105,7 @@ export const MONUMENTS: Monument[] = [
     place: "Chhatarpur",
     era: "c. 950 CE",
     duration: "08:04",
+    image: "https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Of eighty-five temples, twenty-five remain. The Chandela masons oriented each shikhara so that dawn strikes the sanctum before it touches the plinth — the god wakes before the temple does.",
@@ -112,6 +118,7 @@ export const MONUMENTS: Monument[] = [
     place: "Raisen",
     era: "c. 8000 BCE",
     duration: "04:55",
+    image: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Seven hundred rock shelters hold ochre figures painted across ten thousand years — hunters over horsemen over medieval script, each generation drawing on the last without erasing it.",
@@ -124,6 +131,7 @@ export const MONUMENTS: Monument[] = [
     place: "Thrissur",
     era: "c. 1200 CE",
     duration: "06:12",
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Twin columns split and rejoined — a mason's signature carved into the temple's breathing walls. The koothambalam roof is held by joinery alone; not a single nail was driven into this hall.",
@@ -138,6 +146,7 @@ export const MONUMENTS: Monument[] = [
     place: "Puri",
     era: "1250 CE",
     duration: "08:40",
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "A stone chariot of twenty-four wheels, each spoke a different measure of the day. Place a finger at the axle at noon and the shadow still tells the hour, eight hundred years after the sculptor set it.",
@@ -152,11 +161,12 @@ export const MONUMENTS: Monument[] = [
     place: "Majuli",
     era: "1663 CE",
     duration: "05:33",
+    image: "https://images.unsplash.com/photo-1598977123118-4e30ba3c4f5b?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "Clay, bamboo and thatch on the world's largest river island — where the bronzes were lost to the Brahmaputra and only the verses were kept. The satras move house each decade as the river takes the bank.",
       "অসমীয়া":
-        "পৃথিৱীৰ আটাইতকৈ ডাঙৰ নদী দ্বীপত মাটি, বাঁহ আৰু খেৰৰ সত্ৰ — য'ত ব্ৰহ্মপুত্ৰই ধাতুবোৰ লৈ গ'ল, ৰৈ গ'ল কেৱল পদবোৰ।",
+        "পৃথিৱীৰ আটাইতকৈ ডাঙৰ নদী দ্বীপত মাটি, বাঁহ আৰু খেৰৰ সত্ৰ — য'ত ব্ৰহ্মপুত্ৰই धातুবোৰ লৈ গ'ল, ৰৈ গ'ল কেৱল পদবোৰ।",
     },
   },
 ];
