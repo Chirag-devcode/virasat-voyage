@@ -109,30 +109,8 @@ export function Footer() {
     }
   };
 
-<<<<<<< HEAD
-  return (
-    <footer className="w-full bg-[#FAF8F5] text-stone-800 py-12 px-6 font-sans border-t border-stone-200">
-      <div className="max-w-md mx-auto space-y-8">
-        
-        {/* Logo & Brand Description */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full border border-stone-400 flex items-center justify-center p-1 bg-white shadow-sm">
-              <span className="font-serif italic text-lg font-bold text-stone-700">इव</span>
-            </div>
-            <div>
-              <h2 className="font-serif text-lg tracking-widest uppercase font-semibold text-stone-900 leading-tight">
-                INDIAN VIRASAT
-              </h2>
-              <p className="text-[10px] tracking-widest text-stone-500 uppercase">
-                Tradition of India
-              </p>
-            </div>
-          </div>
-=======
  
 const trimmedEmail = email.trim();
->>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
 
           <p className="text-sm text-stone-600 leading-relaxed">
             Blending tradition with modern trends, Indian Virasat celebrates the essence of today's woman through timeless ethnic, fusion, and western styles crafted with elegance and detail.
@@ -163,40 +141,10 @@ const trimmedEmail = email.trim();
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Info & Support */}
-        <div className="space-y-3 pt-2">
-          <h3 className="font-serif italic font-semibold text-base tracking-wider text-stone-900 uppercase">
-            INFO & SUPPORT
-          </h3>
-          <ul className="space-y-2.5 text-sm text-stone-700">
-            <li><a href="#" className="hover:underline">About Us</a></li>
-            <li><a href="#" className="hover:underline">Privacy policy</a></li>
-            <li><a href="#" className="hover:underline">Terms & Condition</a></li>
-            <li><a href="#" className="hover:underline">Refund & Exchange Policy</a></li>
-            <li><a href="#" className="hover:underline">Shipping & Delivery Policy</a></li>
-          </ul>
-        </div>
-=======
 setError("");
 setSubmitted(true);
  
->>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
 
-<<<<<<< HEAD
-        {/* Quick Links */}
-        <div className="space-y-3 pt-2">
-          <h3 className="font-serif italic font-semibold text-base tracking-wider text-stone-900 uppercase">
-            QUICK LINKS
-          </h3>
-          <ul className="space-y-2.5 text-sm text-stone-700">
-            <li><a href="#" className="hover:underline">Orders</a></li>
-            <li><a href="#" className="hover:underline">Search</a></li>
-            <li><a href="#" className="hover:underline">Blogs</a></li>
-            <li><a href="#" className="hover:underline">Profile</a></li>
-            <li><a href="#" className="hover:underline">Contact Us</a></li>
-          </ul>
-=======
 }
 
 return ( <footer className="relative overflow-hidden border-t border-border bg-background">
@@ -279,7 +227,6 @@ return ( <footer className="relative overflow-hidden border-t border-border bg-b
           >
             <XIcon className="h-4 w-4" />
           </a>
->>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
         </div>
 
         {/* Join Our Email List */}
@@ -321,17 +268,12 @@ return ( <footer className="relative overflow-hidden border-t border-border bg-b
         </div>
 
       </div>
-<<<<<<< HEAD
-    </footer>
-  );
-=======
     </div>
   </div>
 </footer>
  
 
 );
->>>>>>> fd6a492dab1e8739ae67dadca53c03801fa30087
 }
 
 export default Footer;
