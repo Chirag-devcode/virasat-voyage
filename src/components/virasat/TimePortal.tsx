@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Play, Pause, Volume2, Globe, Landmark, ShieldCheck } from "lucide-react";
 import { MONUMENTS, STATES, Language } from "../../data/virasat";
 
-const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80";
+// Generic neutral architecture fallback image if a link ever breaks
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80";
 
 export const TimePortal: React.FC = () => {
   const [selectedState, setSelectedState] = useState<string>("Uttar Pradesh");
@@ -112,13 +113,16 @@ export const TimePortal: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="relative h-full min-h-[380px] rounded-xl overflow-hidden border border-slate-300 shadow-lg bg-slate-950 flex flex-col justify-between p-4 group">
               
-              {/* Main Image with Graceful Error Fallback */}
+              {/* Main Image with Keyed Rerender & Error Handling */}
               <img
                 key={currentMonument.id}
                 src={currentMonument.image}
                 alt={currentMonument.name}
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = FALLBACK_IMAGE;
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== FALLBACK_IMAGE) {
+                    target.src = FALLBACK_IMAGE;
+                  }
                 }}
                 className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
               />

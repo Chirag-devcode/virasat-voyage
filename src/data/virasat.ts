@@ -62,7 +62,7 @@ export const MONUMENTS: Monument[] = [
     place: "Kurukshetra",
     era: "c. 3000 BCE",
     duration: "08:45",
-    image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&q=80&w=1200",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Brahma_Sarovar%2C_Kurukshetra.jpg/1280px-Brahma_Sarovar%2C_Kurukshetra.jpg",
     stories: {
       English:
         "Brahma Sarovar is an ancient water tank dedicated to Lord Brahma, believed to be the cradle of civilization and the site where Brahma performed a yajna to create the universe. Spanning over 1,800 feet in length, it was chronicled by 11th-century scholar Al-Biruni as an engineering marvel. Nearby lies Jyotisar, where Lord Krishna delivered the sermon of the Bhagavad Gita to Arjuna.",
