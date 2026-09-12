@@ -7,6 +7,7 @@ import bamboo from "@/assets/craft-bamboo.jpg";
 
 export const STATES = [
   "Uttar Pradesh",
+  "Haryana",
   "Gujarat",
   "Madhya Pradesh",
   "Kerala",
@@ -50,6 +51,20 @@ export const MONUMENTS: Monument[] = [
         "Commissioned in 1632 by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, this ivory-white marble mausoleum on the banks of the Yamuna River stands as an eternal symbol of love and a masterpiece of Mughal architecture.",
       "हिन्दी":
         "मुगल सम्राट शाहजहाँ द्वारा 1632 में अपनी प्रिय पत्नी मुमताज़ महल की याद में बनवाया गया, यमुना नदी के तट पर स्थित यह सफेद संगमरमर का मकबरा प्रेम का एक अमर प्रतीक और स्थापत्य कला का अद्भुत नमूना है।"
+    }
+  },
+  {
+    id: "kurukshetra",
+    state: "Haryana",
+    name: "Kurukshetra \n Land of the Bhagavad Gita",
+    place: "Kurukshetra",
+    era: "c. 3000 BCE",
+    duration: "08:45",
+    stories: {
+      English:
+        "The sacred ground of the Mahabharata and the birthplace of the Bhagavad Gita. At Jyotisar, beneath a holy banyan tree, Lord Krishna imparted the immortal discourse of Karma and Dharma to Arjuna.",
+      "हिन्दी":
+        "महाभारत की ऐतिहासिक भूमि और श्रीमद्भगवद्गीता की जन्मस्थली। ज्योतिसर में पवित्र वटवृक्ष के नीचे भगवान श्रीकृष्ण ने अर्जुन को कर्म और धर्म का अमर संदेश दिया था।"
     }
   },
   {
