@@ -8,6 +8,7 @@ import { GuruShishya } from "@/components/virasat/GuruShishya";
 import { ChatWidget } from "@/components/virasat/ChatWidget";
 import { StatesAtlas } from "@/components/virasat/StatesAtlas";
 import { LandingExperience } from "@/components/virasat/LandingExperience";
+import { Footer } from "@/components/virasat/Footer";
 
 const TITLE = "Virasat AI — Living Archive of Indian Heritage";
 const DESC =
@@ -93,13 +94,7 @@ function Index() {
         {tab === "atlas" && <StatesAtlas />}
       </main>
 
-      <footer className="mt-10 border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-8">
-          <p className="font-display text-lg italic text-lamp-soft">Virasat AI</p>
-          <p className="font-mono text-[10px] tracking-[0.25em] text-muted-foreground">
-            PRESERVING WHAT THE STONES REMEMBER
-          </p>
-        </div>
+      
       </footer>
 
       <ChatWidget />
