@@ -4,7 +4,7 @@ import { TRAIL, type TrailStop } from "@/data/virasat";
 
 const FIRST = TRAIL[0] as TrailStop;
 
-export function TrailQuest() {
+export function StatesAtlas() {
   const [activeId, setActiveId] = useState<string | number>(FIRST.id);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [score, setScore] = useState(0);
@@ -217,7 +217,8 @@ export function TrailQuest() {
                         <XCircle className="w-4 h-4 text-rose-600" />
                         INCORRECT RESPONSE
                       </>
-                    )}
+                    )
+                    }
                   </p>
                   <p className="mt-1 text-slate-800 text-xs">{active.fact}</p>
                 </div>
@@ -243,4 +244,4 @@ export function TrailQuest() {
   );
 }
 
-export default TrailQuest;
+export default StatesAtlas;
