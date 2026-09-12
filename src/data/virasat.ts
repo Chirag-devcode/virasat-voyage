@@ -62,7 +62,7 @@ export const MONUMENTS: Monument[] = [
     place: "Kurukshetra",
     era: "c. 3000 BCE",
     duration: "08:45",
-    image: "https://images.unsplash.com/photo-1609947017136-9ede29d5921f?auto=format&fit=crop&q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "The sacred battlefield of the Mahabharata war and the birthplace of the Bhagavad Gita. At Jyotisar, beneath an ancient banyan tree, Lord Krishna imparted the eternal discourse of Karma and Dharma to Arjuna.",
@@ -90,7 +90,7 @@ export const MONUMENTS: Monument[] = [
     place: "Patan",
     era: "1063 CE",
     duration: "06:40",
-    image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80&w=1200",
     stories: {
       English:
         "A queen built a staircase seven storeys down into the earth to find water, and lined it with five hundred sculptures facing inward. Silted over for eight centuries, the river itself preserved what it buried.",

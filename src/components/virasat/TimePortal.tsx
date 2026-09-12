@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Play, Pause, Volume2, Globe, Landmark, ShieldCheck } from "lucide-react";
 import { MONUMENTS, STATES, Language } from "../../data/virasat";
 
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80";
+
 export const TimePortal: React.FC = () => {
   const [selectedState, setSelectedState] = useState<string>("Uttar Pradesh");
   const [selectedLang, setSelectedLang] = useState<Language>("English");
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Find monument matching the active state
+  // Find monument matching the active state, fallback to first entry
   const currentMonument = MONUMENTS.find((m) => m.state === selectedState) || MONUMENTS[0];
 
   // Dynamic narration text based on selected language
@@ -110,10 +112,14 @@ export const TimePortal: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="relative h-full min-h-[380px] rounded-xl overflow-hidden border border-slate-300 shadow-lg bg-slate-950 flex flex-col justify-between p-4 group">
               
-              {/* Main Image */}
+              {/* Main Image with Graceful Error Fallback */}
               <img
+                key={currentMonument.id}
                 src={currentMonument.image}
                 alt={currentMonument.name}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = FALLBACK_IMAGE;
+                }}
                 className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
               />
 
